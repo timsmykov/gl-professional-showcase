@@ -2,6 +2,8 @@
 
 A software delivery case by **Tim Smykov**, with selected original website/application source and a safe dialogue walkthrough.
 
+![Synthetic bot walkthrough preserving the original Russian dialogue](demo/preview.png)
+
 The project connects a professional product website, a Telegram interface for two audiences, and a FastAPI/PostgreSQL backend. I developed the software using AI-assisted development, owning the interface, implementation and verification work. G&L retains ownership of its brand and business content.
 
 ## Explore the case
