@@ -1,10 +1,12 @@
 # G&L Professional — Website, Bot and Backend
 
-A software delivery case by **Tim Smykov**, with selected original website/application source and a safe dialogue walkthrough.
+A connected product experience for a professional cosmetics business: an Astro/Vue website, a Telegram bot for two audiences, and a FastAPI/PostgreSQL backend for bookings, orders and recording access.
+
+**My role:** I developed the product experience and software, from interface design and dialogue flows to backend implementation and verification. [Visit the live website](https://glprofessional.ru/) · [Explore the interactive bot walkthrough](https://timsmykov.github.io/gl-professional-showcase/) · [Read the case study](docs/case-study.md).
 
 ![Synthetic bot walkthrough preserving the original Russian dialogue](demo/preview.png)
 
-The project connects a professional product website, a Telegram interface for two audiences, and a FastAPI/PostgreSQL backend. I developed the software using AI-assisted development, owning the interface, implementation and verification work. G&L retains ownership of its brand and business content.
+G&L retains ownership of its brand and business content. The published walkthrough uses synthetic records and provider responses.
 
 ## Explore the case
 
