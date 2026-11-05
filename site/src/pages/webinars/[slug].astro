@@ -1,0 +1,101 @@
+---
+import type { GetStaticPaths } from 'astro';
+
+import { telegramBotUrl } from '@/config/contact-links';
+import TelegramButton from '@/components/TelegramButton.astro';
+import SiteLayout from '@/layouts/SiteLayout.astro';
+import { contentRepository } from '@/lib/content';
+
+export const getStaticPaths = (async () => {
+  const webinars = await contentRepository.listWebinars();
+  return webinars
+    .filter((webinar) => webinar.status === 'published')
+    .map((webinar) => ({
+      params: { slug: webinar.slug },
+      props: { webinar },
+    }));
+}) satisfies GetStaticPaths;
+
+const { webinar } = Astro.props;
+const botUrl = webinar.publicCode
+  ? `${telegramBotUrl}?start=${encodeURIComponent(webinar.publicCode)}`
+  : null;
+---
+
+<SiteLayout
+  title={webinar.title}
+  description={webinar.summary}
+  noindex={webinar.demo === true}
+>
+  <article class="section">
+    <div class="container">
+      <div class="webinar-intro">
+        <div>
+          <h1>{webinar.title}</h1>
+          <p class="webinar-format">{webinar.formatLabel}</p>
+          <p class="lede">{webinar.summary}</p>
+          {webinar.speaker && <p>Спикер: {webinar.speaker}</p>}
+          {webinar.format === 'live' && webinar.date && (
+            <p>Дата встречи: {webinar.date}</p>
+          )}
+          {webinar.duration && <p>Длительность: {webinar.duration}</p>}
+        </div>
+      </div>
+      <div class="prose">
+        {webinar.program && webinar.program.length > 0 && (
+          <section class="info-section">
+            <h2>Программа</h2>
+            <ol>
+              {webinar.program.map((topic) => (
+                <li>{topic}</li>
+              ))}
+            </ol>
+          </section>
+        )}
+        {webinar.audience && (
+          <section class="info-section">
+            <h2>Для кого</h2>
+            <p>{webinar.audience}</p>
+          </section>
+        )}
+        <section class="info-section">
+          <h2>{webinar.format === 'live' ? 'Участие' : 'Доступ к записи'}</h2>
+          {webinar.priceLabel && <p class="lead">{webinar.priceLabel}</p>}
+          {webinar.terms && <p>{webinar.terms}</p>}
+          {botUrl && (
+            <>
+              <TelegramButton href={botUrl} label="Открыть в Telegram" />
+            </>
+          )}
+        </section>
+        <p class="return-link">
+          <a class="button button-outline" href="/webinars/">
+            Вернуться к вебинарам
+          </a>
+        </p>
+      </div>
+    </div>
+  </article>
+</SiteLayout>
+
+<style>
+  .webinar-cover {
+    padding: 32px;
+    color: var(--ink);
+  }
+  .article {
+    max-width: 52rem;
+  }
+
+  h1 {
+    margin-block: 0 1rem;
+    font-size: var(--display-page);
+  }
+  .webinar-format {
+    font-weight: 700;
+    color: var(--color-muted);
+  }
+  .return-link {
+    margin-block: 32px;
+  }
+</style>

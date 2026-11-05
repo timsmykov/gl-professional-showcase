@@ -1,0 +1,60 @@
+---
+import '../features/motion/product-hover.css';
+const boxes = [
+  { id: 'nad', label: 'NAD+ Skin Matrix', x: 56.25, y: 7.638889, width: 630 },
+  { id: 'cute', label: 'CUTE', x: 7.8125, y: 20.138889, width: 630 },
+  { id: 'plla', label: 'PLLA', x: 44.270833, y: 51.388889, width: 980 },
+  {
+    id: 'cute-ultra',
+    label: 'CUTE Ultra',
+    x: 6.770833,
+    y: 61.111111,
+    width: 630,
+  },
+];
+---
+
+<figure class="hero-structure" data-hero-boxes data-product-hover-group>
+  {boxes.map((box) => (
+    <div
+      class="hero-box"
+      data-hero-box={box.id}
+      data-product-hover
+      style={`left:${box.x}%;top:${box.y}%;width:${(box.width / 1920) * 100}%;aspect-ratio:${box.width}/372`}
+    >
+      <img
+        src={`/images/editorial/hero-boxes/${box.id}.webp`}
+        alt={`Коробка ${box.label}`}
+        width={box.width}
+        height="372"
+        draggable="false"
+        loading="eager"
+        decoding="async"
+      />
+    </div>
+  ))}
+</figure>
+<script>
+  import { setupProductHover } from '../features/motion/product-hover';
+  setupProductHover();
+  document.addEventListener('astro:page-load', setupProductHover);
+</script>
+<style>
+  .hero-structure {
+    margin: 0;
+    width: 100%;
+    position: relative;
+    aspect-ratio: 4 / 3;
+  }
+  .hero-box {
+    position: absolute;
+  }
+  img {
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+</style>

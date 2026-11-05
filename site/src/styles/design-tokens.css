@@ -1,0 +1,118 @@
+:root {
+  --color-paper: #f3f0e7;
+  --product-photo-background: var(--color-paper);
+  --color-ink: #203e49;
+  --color-muted: #526b72;
+  --color-ice: #d8e7e5;
+  --color-champagne: #ead8ab;
+  --color-heading-accent: #557c84;
+  --surface-outer: #e8e8df;
+  --surface-library: #dce7e2;
+  --surface-pause: #e5e7dd;
+  --surface-nad: #dce9e6;
+  --surface-plla: #e4e7df;
+  --surface-cute: #ebe0c6;
+  --action-hover: #365963;
+  --action-active: #203e49;
+  --action-soft-hover: #e3e8de;
+  --focus: #927038;
+  --status-error: #7a3434;
+  --status-success: #2f5a4a;
+  --status-warning: #735c2f;
+  --border-control: #a4b9b9;
+  --border-divider: #aabfbb;
+  --font-display: 'Trebuchet MS', Arial, sans-serif;
+  --font-body: Arial, sans-serif;
+  --font-mark-placeholder: Georgia, serif;
+  --display-hero: clamp(3.625rem, 1.25rem + 7.5vw, 8.75rem);
+  --display-section: clamp(2.625rem, 1.5rem + 3.75vw, 5.5rem);
+  --display-product: clamp(2.5rem, 1.5rem + 3.5vw, 4.5rem);
+  --display-pause: clamp(45px, 6.5vw, 94px);
+  --display-closing: clamp(42px, 7vw, 100px);
+  --display-page: clamp(1.25rem, 0.5rem + 7vw, 6rem);
+  --display-subsection: var(--display-section);
+  --text-card-size: clamp(1.75rem, 1.25rem + 2vw, 3rem);
+  --text-summary-size: clamp(1.375rem, 1rem + 1.2vw, 2.125rem);
+  --control-height: 52px;
+  --control-padding: 24px;
+  --section-space: 64px;
+  --section-compact-space: 32px;
+  --leading-display: 1.03;
+  --tracking-display: -0.055em;
+  --text-body-size: 1.125rem;
+  --text-body-leading: 1.55;
+  --text-lead-size: clamp(1.375rem, 1rem + 1.25vw, 2.375rem);
+  --text-lead-leading: 1.4;
+  --text-meta-size: 0.9375rem;
+  --text-nav-size: 1.125rem;
+  --text-action-size: 1.0625rem;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 22px;
+  --space-6: 28px;
+  --space-7: 35px;
+  --space-8: 44px;
+  --space-9: 58px;
+  --space-10: 68px;
+  --space-11: 80px;
+  --space-12: 100px;
+  --space-13: 110px;
+  /* Composition grows from 320 to 1920 CSS px; surfaces remain full width. */
+  --layout-min: 320px;
+  --layout-design-max: 1920px;
+  --content-max: 1560px;
+  --content-width: 90%;
+  --radius-xs: 4px;
+  --radius-field: 12px;
+  --radius-card: 18px;
+  --radius-soft: 24px;
+  --radius-shell-mobile: 0;
+  --radius-shell-wide: 0;
+  --radius-pill: 100px;
+  --shadow-product: 18px 27px 26px #48666928;
+  --light-inset: inset 14px 14px 35px #ffffff88;
+  --shadow-soft: 12px 16px 35px #52757626;
+  --duration-fast: 200ms;
+  --ease-standard: ease;
+  --layer-base: 0;
+  --layer-content: 1;
+  --layer-skip-link: 10;
+}
+
+@media (min-width: 760px) {
+  :root {
+    --text-body-size: 1.5rem;
+    --text-meta-size: 1rem;
+    --text-nav-size: 1.25rem;
+    --text-action-size: 1.375rem;
+    --control-height: 60px;
+    --control-padding: 28px;
+    --section-space: 80px;
+    --section-compact-space: 40px;
+  }
+}
+@media (min-width: 1100px) {
+  :root {
+    --text-body-size: 1.75rem;
+    --text-meta-size: 1.125rem;
+    --text-nav-size: 1.375rem;
+    --text-action-size: 1.625rem;
+    --control-height: 68px;
+    --control-padding: 34px;
+    --section-space: 72px;
+    --section-compact-space: 50px;
+  }
+}
+@media (min-width: 1800px) {
+  :root {
+    --text-body-size: 1.875rem;
+    --text-meta-size: 1.25rem;
+    --text-nav-size: 1.5rem;
+    --text-action-size: 1.75rem;
+    --control-height: 72px;
+    --section-space: 88px;
+    --section-compact-space: 60px;
+  }
+}

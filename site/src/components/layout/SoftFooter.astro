@@ -1,0 +1,121 @@
+---
+import { telegramBotUrl, brandInstagramUrl } from '@/config/contact-links';
+import SocialIcon from '@/components/SocialIcon.astro';
+const year = new Date().getUTCFullYear();
+const links = [
+  {
+    icon: 'telegram' as const,
+    accessibleLabel: 'Telegram-бот G&L',
+    href: telegramBotUrl,
+  },
+  {
+    icon: 'instagram' as const,
+    accessibleLabel: 'Instagram G&L',
+    href: brandInstagramUrl,
+  },
+];
+---
+
+<footer class="site-footer">
+  <div class="wrap footer-content">
+    <div class="footer-brand">
+      <a class="brand" href="/">
+        <img
+          src="/images/brand/gl-logo.svg"
+          width="80"
+          height="102"
+          alt="G&L — на главную"
+        />
+      </a>
+      <p>© {year} G&amp;L Professional</p>
+    </div>
+    <ul class="footer-links">
+      {links.map(({ icon, accessibleLabel, href }) => (
+        <li>
+          <a
+            href={href}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={`${accessibleLabel}, откроется в новой вкладке`}
+          >
+            <SocialIcon name={icon} />
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</footer>
+<style>
+  .site-footer {
+    padding-block: 8px;
+    border-top: 1px solid var(--border-divider);
+  }
+  .footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 8px;
+  }
+  .footer-content > * {
+    min-width: 0;
+  }
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-right: auto;
+  }
+  .footer-brand .brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+  }
+  .footer-brand img {
+    width: 26px;
+    height: auto;
+  }
+  .footer-brand p {
+    margin: 0;
+    font-size: 0.75rem;
+    color: var(--color-muted);
+  }
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .footer-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    min-width: 44px;
+    justify-content: center;
+    max-width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition:
+      background-color var(--motion-feedback) var(--motion-ease),
+      color var(--motion-feedback) var(--motion-ease);
+  }
+  .footer-links a:focus-visible {
+    background: var(--interaction-tint);
+    color: var(--ink);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .footer-links a:hover {
+      background: var(--interaction-tint);
+      color: var(--ink);
+    }
+  }
+  .footer-links :global(svg) {
+    flex-shrink: 0;
+  }
+</style>

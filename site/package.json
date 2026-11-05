@@ -1,0 +1,46 @@
+{
+  "name": "gl-professional-site",
+  "version": "0.1.2",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "22.22.3",
+    "npm": "10.9.8"
+  },
+  "packageManager": "npm@10.9.8",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "node scripts/serve-dist.mjs",
+    "check": "astro check",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:e2e": "npm run build && playwright test",
+    "quality": "npm run format:check && npm run lint && npm run test && npm run test:e2e",
+    "quality:bounded": "npm run format:check && npm run lint && npm run test && npm run build && node scripts/test-e2e-batches.mjs"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "3.7.4",
+    "@astrojs/vue": "7.0.3",
+    "astro": "7.3.3",
+    "vue": "3.5.43"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.10",
+    "@axe-core/playwright": "4.13.0",
+    "@eslint/js": "10.0.1",
+    "@playwright/test": "1.63.0",
+    "@types/node": "22.20.4",
+    "eslint": "10.11.0",
+    "eslint-plugin-astro": "3.2.1",
+    "eslint-plugin-vue": "10.11.0",
+    "prettier": "3.9.8",
+    "prettier-plugin-astro": "1.0.1",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.70.0",
+    "vitest": "5.0.1",
+    "vue-eslint-parser": "10.4.1"
+  }
+}

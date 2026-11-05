@@ -1,0 +1,387 @@
+/* The laboratory and the approved public theme share one palette. */
+:root:has([data-molecular-study]:not([data-treatment='original'])),
+:root:has([data-molecular-preview]) {
+  --color-paper: #f8fafb;
+  --color-canvas: #f8fafb;
+  --color-surface: #f8fafb;
+  --color-ink: #12304d;
+  --color-text: #12304d;
+  --color-muted: #526779;
+  --color-heading-accent: #466b8a;
+  --color-ice: #eaf1f7;
+  --color-champagne: #d6b578;
+  --color-border: #c3d1de;
+  --color-border-strong: #aebfd0;
+  --border-control: #9eb3c6;
+  --border-divider: #c5d3df;
+  --surface-outer: #f8fafb;
+  --surface-library: #edf3f8;
+  --surface-pause: #edf2f7;
+  --surface-nad: #edf4f9;
+  --surface-plla: #f6f3ed;
+  --surface-cute: #f5f2eb;
+  --interaction-tint: #eaf0f6;
+  --action-hover: #294b6a;
+  --action-active: #12304d;
+  --action-soft-hover: #e7eef5;
+  --color-accent: #12304d;
+  --color-focus: #8b662b;
+  --focus: #8b662b;
+}
+[data-molecular-study] {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+}
+/* The scaffold lives behind the whole page, never in a hero artwork slot. */
+.study-dna-field {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+}
+[data-treatment='original'] .study-dna-field {
+  display: none;
+}
+[data-molecular-study]:not([data-treatment='original']) .home-hero-art {
+  display: none;
+}
+.study-dna {
+  position: absolute;
+  height: auto;
+  max-width: none;
+  mask-image: linear-gradient(transparent, black 12%, black 76%, transparent);
+}
+.study-dna--arrival {
+  width: clamp(460px, 57vw, 960px);
+  right: clamp(-420px, -18vw, -180px);
+  top: -260px;
+  opacity: 0.42;
+  transform: rotate(16deg);
+}
+.study-dna--collection {
+  width: clamp(450px, 48vw, 820px);
+  left: clamp(-470px, -22vw, -255px);
+  top: 34%;
+  opacity: 0.22;
+  transform: rotate(-23deg);
+}
+.study-dna--closing {
+  width: clamp(480px, 50vw, 850px);
+  right: clamp(-440px, -21vw, -265px);
+  bottom: -500px;
+  opacity: 0.34;
+  transform: rotate(24deg);
+}
+[data-treatment='expressive'] .study-dna--arrival {
+  opacity: 0.68;
+}
+[data-treatment='expressive'] .study-dna--collection {
+  opacity: 0.4;
+}
+[data-treatment='expressive'] .study-dna--closing {
+  opacity: 0.58;
+}
+[data-molecular-study]:not([data-treatment='original']) .approach,
+[data-molecular-study]:not([data-treatment='original']) .pause {
+  background: linear-gradient(100deg, #edf3f866, #f8fafb00 65%, #edf3f833);
+}
+[data-molecular-study]:not([data-treatment='original']) .home-formats > div {
+  background: #ecf2f7e6;
+  box-shadow: inset 0 1px 0 #ffffffd9;
+}
+[data-molecular-study]:not([data-treatment='original']) .product-tile {
+  background: #ffffff9e;
+  border-color: #c5d3df;
+}
+[data-molecular-study]:not([data-treatment='original']) .product-tile:hover,
+[data-molecular-study]:not([data-treatment='original'])
+  .product-tile:focus-visible {
+  background: #e9f0f7;
+  border-color: #738fa9;
+}
+/* Copy retains its existing measure; background geometry cannot affect flow. */
+@media (min-width: 760px) {
+  [data-molecular-study]:not([data-treatment='original']) .home-hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  [data-molecular-study]:not([data-treatment='original']) .hero-copy {
+    width: 68%;
+  }
+  .study-dna-field::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      #f8fafb00,
+      #f8fafbb0 28%,
+      #f8fafbb0 58%,
+      #f8fafb00 88%
+    );
+  }
+}
+@media (max-width: 759px) {
+  .study-dna--collection {
+    width: 600px;
+    left: -300px;
+    top: 39%;
+    opacity: 0.3;
+    transform: rotate(-16deg);
+  }
+  .study-dna--closing {
+    width: 600px;
+    right: -230px;
+    bottom: -280px;
+    transform: rotate(-14deg);
+  }
+  [data-molecular-study]:not([data-treatment='original']) .home-hero {
+    padding-block: 1.5rem 3.5rem;
+  }
+  .study-dna-field::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      #f8fafb99,
+      #f8fafbd9 26%,
+      #f8fafba0 58%,
+      #f8fafb00
+    );
+  }
+}
+/* Portrait tablets get a diagonal composition instead of the narrow edge strip.
+   Landscape tablets use the existing desktop composition from 1000px. */
+@media (min-width: 760px) and (max-width: 999px) {
+  .study-dna-field {
+    background:
+      radial-gradient(ellipse at 87% 16%, #dceaf333, transparent 32%),
+      radial-gradient(ellipse at 8% 49%, #eee1ca2e, transparent 30%),
+      radial-gradient(ellipse at 80% 82%, #dae9f033, transparent 34%);
+  }
+  .study-dna--arrival {
+    width: 760px;
+    right: -170px;
+    top: -380px;
+    opacity: 0.45;
+    transform: rotate(32deg);
+  }
+  .study-dna--collection {
+    width: 700px;
+    left: -170px;
+    top: 25%;
+    opacity: 0.3;
+    transform: rotate(-48deg);
+    filter: blur(0.6px);
+  }
+  .study-dna--closing {
+    width: 900px;
+    right: -260px;
+    bottom: -500px;
+    opacity: 0.32;
+    transform: rotate(-40deg);
+  }
+  .study-dna-field::before {
+    content: '';
+    position: absolute;
+    width: 620px;
+    height: 1313px;
+    left: -350px;
+    top: -380px;
+    background: url('/images/decor/dna-scaffold.svg') center / contain no-repeat;
+    opacity: 0.16;
+    transform: rotate(-35deg);
+    filter: blur(1px);
+    mask-image: linear-gradient(transparent, black 22%, black 64%, transparent);
+  }
+  .study-dna-field::after {
+    background: linear-gradient(
+      90deg,
+      #f8fafb33,
+      #f8fafba6 15%,
+      #f8fafbd9 34%,
+      #f8fafbdf 56%,
+      #f8fafb33 85%,
+      #f8fafb00
+    );
+  }
+  [data-treatment='expressive'] .study-dna-field::before {
+    opacity: 0.28;
+  }
+  [data-treatment='expressive'] .study-dna--arrival {
+    opacity: 0.65;
+  }
+  [data-treatment='expressive'] .study-dna--collection {
+    opacity: 0.44;
+  }
+  [data-treatment='expressive'] .study-dna--closing {
+    opacity: 0.54;
+  }
+}
+/* Desktop composition follows the capped content column, including wide monitors.
+   Phone and tablet treatments above remain unchanged. */
+@media (min-width: 1000px) {
+  [data-molecular-study]:not([data-treatment='original']) .home-hero {
+    min-height: clamp(500px, 72svh, 740px);
+  }
+  .study-dna-field {
+    background:
+      radial-gradient(ellipse at 81% 10%, #dceaf34d, transparent 37%),
+      radial-gradient(ellipse at 10% 43%, #eee1ca33, transparent 30%),
+      radial-gradient(ellipse at 80% 80%, #dae9f03d, transparent 35%);
+  }
+  .study-dna--arrival {
+    width: clamp(800px, 62vw, 1100px);
+    right: max(-80px, calc((100% - 1560px) / 2 - 150px));
+    top: -300px;
+    opacity: 0.5;
+    transform: rotate(25deg);
+  }
+  .study-dna--collection {
+    width: clamp(800px, 64vw, 1100px);
+    left: max(-300px, calc((100% - 1560px) / 2 - 460px));
+    top: 17%;
+    opacity: 0.3;
+    transform: rotate(-28deg);
+    filter: blur(0.4px);
+  }
+  .study-dna--closing {
+    width: clamp(900px, 64vw, 1200px);
+    right: max(-150px, calc((100% - 1560px) / 2 - 260px));
+    bottom: -440px;
+    opacity: 0.38;
+    transform: rotate(-30deg);
+  }
+  .study-dna-field::before {
+    content: '';
+    position: absolute;
+    width: 900px;
+    height: 1906px;
+    left: max(-420px, calc((100% - 1560px) / 2 - 540px));
+    top: -500px;
+    background: url('/images/decor/dna-scaffold.svg') center / contain no-repeat;
+    opacity: 0.2;
+    transform: rotate(-38deg);
+    filter: blur(1px);
+    mask-image: linear-gradient(transparent, black 25%, black 62%, transparent);
+  }
+  .study-dna-field::after {
+    background: linear-gradient(
+      90deg,
+      #f8fafb00,
+      #f8fafb88 13%,
+      #f8fafbe6 30%,
+      #f8fafbd9 54%,
+      #f8fafb30 72%,
+      #f8fafb00
+    );
+  }
+  [data-treatment='expressive'] .study-dna-field::before {
+    opacity: 0.32;
+  }
+  [data-treatment='expressive'] .study-dna--arrival {
+    opacity: 0.72;
+  }
+  [data-treatment='expressive'] .study-dna--collection {
+    opacity: 0.46;
+  }
+  [data-treatment='expressive'] .study-dna--closing {
+    opacity: 0.6;
+  }
+}
+/* Controls are outside the landing's document flow and do not resize its layout. */
+.study-controls {
+  position: fixed;
+  z-index: 30;
+  left: max(12px, env(safe-area-inset-left));
+  bottom: max(12px, env(safe-area-inset-bottom));
+  max-width: calc(100vw - 24px);
+  border: 1px solid #c3cfda;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px #18354b1c;
+  background: #ffffffed;
+  color: #12304d;
+  font:
+    13px/1.4 Arial,
+    sans-serif;
+}
+.study-controls summary {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 12px 16px;
+  min-height: 44px;
+  cursor: pointer;
+  list-style: none;
+  font-size: 13px;
+}
+.study-controls summary::-webkit-details-marker {
+  display: none;
+}
+.study-controls summary::after {
+  content: '+';
+  margin-left: auto;
+  font-size: 20px;
+}
+.study-controls[open] summary::after {
+  content: '−';
+}
+.study-controls summary span:first-child {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #b89556;
+}
+.study-controls-body {
+  padding: 0 12px 12px;
+  width: min(320px, calc(100vw - 26px));
+}
+.study-controls p {
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0 4px 12px;
+  color: #526779;
+}
+.study-options {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  background: #edf2f6;
+  border-radius: 12px;
+}
+.study-options a {
+  flex: 1;
+  min-height: 44px;
+  display: grid;
+  place-items: center;
+  padding: 8px;
+  border-radius: 9px;
+  color: #12304d;
+  font: inherit;
+  text-decoration: none;
+}
+.study-options a[aria-current='true'] {
+  background: #12304d;
+  color: white;
+}
+.study-controls .study-back {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 4px 0;
+  color: #12304d;
+  font-size: 13px;
+}
+.study-controls a:focus-visible,
+.study-controls summary:focus-visible {
+  outline: 3px solid #8b662b;
+  outline-offset: 2px;
+}
+.study-controls noscript {
+  display: block;
+  padding: 8px 4px;
+  font-size: 13px;
+}

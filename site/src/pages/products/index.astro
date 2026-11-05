@@ -1,0 +1,118 @@
+---
+import SiteLayout from '@/layouts/SiteLayout.astro';
+import TelegramButton from '@/components/TelegramButton.astro';
+import ProductCard from '@/components/products/ProductCard.astro';
+import { contentRepository } from '@/lib/content';
+
+const products = await contentRepository.listProducts();
+---
+
+<SiteLayout
+  title="Препараты G&L"
+  description="Четыре препарата G&L Professional: состав, особенности и материалы о каждом продукте."
+>
+  <div class="products-page container">
+    <header class="products-heading">
+      <h1>Препараты G&amp;L</h1>
+      <p class="lede">
+        Выберите препарат, чтобы узнать о его составе и особенностях.
+      </p>
+    </header>
+
+    <section class="products-catalog" aria-labelledby="catalog-heading">
+      <h2 id="catalog-heading" class="visually-hidden">
+        Каталог препаратов
+      </h2>
+      <ul class="products-grid">
+        {products.map((product, index) => (
+          <li class={`product-card product-card--${product.line}`}>
+            <ProductCard
+              product={product}
+              variant="catalog"
+              eager={index === 0}
+            />
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section
+      class="products-contact"
+      aria-labelledby="products-contact-heading"
+    >
+      <div>
+        <h2 id="products-contact-heading">Есть вопросы о препаратах?</h2>
+      </div>
+      <div class="contact-links">
+        <TelegramButton />
+      </div>
+    </section>
+  </div>
+</SiteLayout>
+
+<style>
+  .products-page {
+    padding-block: 24px 48px;
+  }
+  .products-heading {
+    max-width: 52rem;
+    margin-bottom: 24px;
+  }
+  .products-heading h1 {
+    margin: 12px 0 16px;
+    font-size: var(--display-page);
+    line-height: 1.06;
+  }
+  .products-heading .lede {
+    max-width: 43rem;
+    margin: 0;
+  }
+  .products-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  .product-card {
+    min-width: 0;
+  }
+  .products-contact {
+    display: grid;
+    gap: 20px;
+    padding: 24px;
+    margin-top: 32px;
+    border-radius: 24px;
+    border: 1px solid var(--border-divider);
+  }
+  .products-contact > *,
+  .contact-links > * {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .products-contact h2 {
+    margin: 0;
+    font-size: var(--display-subsection);
+  }
+  .contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-content: start;
+  }
+  @media (min-width: 760px) {
+    .products-page {
+      padding-block: 32px 64px;
+    }
+    .products-grid {
+      gap: 20px;
+    }
+  }
+  @media (min-width: 1000px) {
+    .products-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-auto-rows: 1fr;
+    }
+  }
+</style>

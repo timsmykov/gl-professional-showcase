@@ -1,0 +1,28 @@
+---
+import SocialIcon from '@/components/SocialIcon.astro';
+import { telegramBotUrl } from '@/config/contact-links';
+interface Props {
+  href?: string;
+  label?: string;
+}
+const { href = telegramBotUrl, label = 'Написать в Telegram' } = Astro.props;
+---
+
+<a class="button telegram-button" href={href} target="_blank" rel="noreferrer">
+  <SocialIcon name="telegram" />
+  <span class="telegram-button-label">{label}</span>
+  <span class="visually-hidden">, откроется в новой вкладке</span>
+</a>
+<style>
+  .telegram-button {
+    gap: 10px;
+  }
+  .telegram-button :global(svg) {
+    flex-shrink: 0;
+  }
+  .telegram-button-label {
+    min-width: 0;
+    font: inherit;
+    line-height: inherit;
+  }
+</style>

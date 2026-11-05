@@ -1,0 +1,36 @@
+---
+import { siteSections } from '@/config/navigation';
+interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+const path = Astro.url.pathname;
+const section = siteSections.find((item) => path.startsWith(item.href));
+---
+
+{path !== '/' && (
+  <nav class="breadcrumbs wrap" aria-label="Хлебные крошки">
+    <a href="/">Главная</a>
+    <span aria-hidden="true">/</span>
+    {section && path !== section.href && (
+      <>
+        <a href={section.href}>{section.label}</a>
+        <span aria-hidden="true">/</span>
+      </>
+    )}
+    <span aria-current="page">
+      {section?.href === path ? section.label : title}
+    </span>
+  </nav>
+)}
+<style>
+  nav {
+    padding-top: 20px;
+    margin-bottom: 0;
+  }
+  a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+</style>

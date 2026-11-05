@@ -1,0 +1,179 @@
+---
+import type { ProductSummary } from '@/content/site.types';
+interface Props {
+  product: ProductSummary;
+  variant?: 'preview' | 'catalog';
+  eager?: boolean;
+}
+const { product, variant = 'preview', eager = false } = Astro.props;
+const image = product.packagingPhoto?.card ?? product.cover;
+const preview = variant === 'preview';
+const titleId = `${variant}-${product.slug}`;
+---
+
+<a
+  class:list={['product-tile', preview ? 'home-product' : 'product-card-link']}
+  href={`/products/${product.slug}/`}
+  aria-labelledby={titleId}
+>
+  <div
+    class:list={[
+      'product-tile-image',
+      preview ? 'home-product-image' : 'product-card-image',
+      {
+        'home-product-image--photo': preview && Boolean(product.packagingPhoto),
+        'product-card-image--photo':
+          !preview && Boolean(product.packagingPhoto),
+      },
+    ]}
+    data-product-hover={preview ? '' : undefined}
+  >
+    <img
+      src={image.src}
+      srcset={image.srcSet}
+      sizes="(min-width: 1000px) 23vw, 44vw"
+      alt=""
+      width={image.width}
+      height={image.height}
+      loading={eager ? 'eager' : 'lazy'}
+      decoding="async"
+      draggable="false"
+    />
+  </div>
+  <div
+    class:list={[
+      'product-tile-copy',
+      preview ? 'home-product-copy' : 'product-card-copy',
+    ]}
+  >
+    <h3 id={titleId}>{product.title}</h3>
+    {!preview && <p class="product-tile-description">{product.summary}</p>}
+  </div>
+</a>
+<style>
+  .product-tile {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-width: 0;
+    padding: 12px;
+    border: 1px solid var(--border-divider);
+    border-radius: 16px;
+    color: inherit;
+    text-decoration: none;
+    background: transparent;
+    transition:
+      border-color var(--motion-feedback) var(--motion-ease),
+      background-color var(--motion-feedback) var(--motion-ease);
+  }
+  .product-tile:focus-visible {
+    border-color: var(--color-ink);
+    background-color: var(--interaction-tint);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .product-tile:hover {
+      border-color: var(--color-ink);
+      background-color: var(--interaction-tint);
+    }
+  }
+  .product-tile-image {
+    height: clamp(104px, 31vw, 180px);
+    display: grid;
+    place-items: center;
+    min-width: 0;
+    background: transparent;
+  }
+  .product-tile-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    object-fit: contain;
+    pointer-events: none;
+    user-select: none;
+  }
+  .product-tile-copy {
+    flex: 1;
+    min-width: 0;
+    padding-top: 12px;
+  }
+  .product-tile h3 {
+    margin: 0;
+    min-height: 2.5em;
+    font-size: 1rem;
+    line-height: 1.25;
+    letter-spacing: -0.025em;
+    overflow-wrap: anywhere;
+    text-decoration: none;
+  }
+  .product-tile-description {
+    margin: 8px 0 0;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+  }
+  @media (min-width: 760px) {
+    .product-tile {
+      padding: 20px;
+      border-radius: 20px;
+    }
+    .product-tile-image {
+      height: 180px;
+    }
+    .product-tile h3 {
+      font-size: 1.5rem;
+    }
+    .product-tile-description {
+      font-size: 1rem;
+    }
+  }
+  @media (min-width: 1000px) {
+    .product-tile {
+      padding: 16px;
+    }
+    .product-tile-image {
+      height: clamp(136px, 13vw, 200px);
+    }
+    .product-tile h3 {
+      font-size: clamp(1.25rem, 1.6vw, 1.75rem);
+    }
+  }
+  .product-card-link {
+    display: grid;
+    grid-template-columns: minmax(96px, 30%) minmax(0, 1fr);
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+  }
+  .product-card-link .product-tile-image {
+    height: clamp(120px, 25vw, 220px);
+  }
+  .product-card-link .product-tile-copy {
+    padding-top: 0;
+  }
+  .product-card-link h3 {
+    min-height: 0;
+    font-size: clamp(1.25rem, 2.5vw, 2.75rem);
+  }
+  .product-card-link .product-tile-description {
+    font-size: clamp(0.9375rem, 1.5vw, 1.5rem);
+    max-width: 52ch;
+  }
+  @media (min-width: 1000px) {
+    .product-card-link .product-tile-image {
+      height: clamp(140px, 11vw, 180px);
+    }
+    .product-card-link h3 {
+      font-size: clamp(1.25rem, 1.8vw, 2rem);
+    }
+    .product-card-link .product-tile-description {
+      font-size: clamp(1rem, 1.25vw, 1.25rem);
+    }
+  }
+  @media (min-width: 760px) {
+    .product-card-link {
+      gap: 20px;
+      padding: 24px;
+    }
+  }
+</style>

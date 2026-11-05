@@ -1,0 +1,55 @@
+---
+interface Props {
+  variant?: 'a' | 'b';
+  eager?: boolean;
+  animated?: boolean;
+}
+const { variant = 'b', eager = false, animated = false } = Astro.props;
+---
+
+<figure class:list={['hero-product-art', `hero-product-art--${variant}`]}>
+  <div class="hero-material-layer">
+    <div class:list={{ 'hero-breath': animated }}>
+      <div class:list={{ 'hero-response': animated }}>
+        <img
+          class="hero-material"
+          src={`/images/editorial/hero-material-${variant}.webp`}
+          alt=""
+          width="1200"
+          height="800"
+          loading={eager ? 'eager' : 'lazy'}
+          decoding="async"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="hero-posters">
+    <img
+      src="/images/products/plla-activator/visual-01.webp"
+      alt="Клиентский визуал PLLA+ Activator"
+      width="1024"
+      height="1280"
+      loading={eager ? 'eager' : 'lazy'}
+      decoding="async"
+    />
+    <img
+      class="hero-poster-main"
+      src="/images/products/nad-skin-matrix/visual-01.webp"
+      alt="Клиентский визуал NAD+ Skin Matrix"
+      width="1024"
+      height="1280"
+      loading={eager ? 'eager' : 'lazy'}
+      fetchpriority={eager ? 'high' : 'auto'}
+      decoding="async"
+    />
+    <img
+      src="/images/products/cute/visual-01.webp"
+      alt="Клиентский визуал CUTE"
+      width="1024"
+      height="1280"
+      loading={eager ? 'eager' : 'lazy'}
+      decoding="async"
+    />
+  </div>
+  <figcaption>NAD+ Skin Matrix · PLLA+ Activator · CUTE</figcaption>
+</figure>

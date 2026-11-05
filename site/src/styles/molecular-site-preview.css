@@ -1,0 +1,185 @@
+/* Enabled by static markup only in a dev-host build. Content and grids stay shared. */
+[data-molecular-preview] {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+}
+[data-molecular-preview]:not([data-molecular-preview='home']) {
+  min-height: 65svh;
+}
+/* Let short utility pages fill the viewport without fixing footer height. */
+.shell:has(> main[data-molecular-preview='utility']) {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+}
+[data-molecular-preview='utility'] {
+  flex: 1;
+}
+[data-molecular-preview] .lesson-art {
+  background: var(--color-ice);
+}
+[data-molecular-preview] .info-section {
+  border-color: var(--border-divider);
+}
+main[data-molecular-preview] .filter__button:hover {
+  background: var(--interaction-tint);
+  color: var(--color-text);
+}
+main[data-molecular-preview] .filter__button--active:hover {
+  background: var(--action-hover);
+  color: white;
+}
+/* Product summaries are reading text, including on narrow screens. */
+@media (max-width: 999px) {
+  main[data-molecular-preview='catalog']
+    .products-grid
+    .product-card-link
+    .product-tile-description {
+    font-size: 1rem;
+  }
+}
+/* Quiet glass surfaces leave depth at the edges and protect dense copy. */
+[data-molecular-preview] .product-tile,
+[data-molecular-preview] .products-contact,
+[data-molecular-preview] .contact-action {
+  background: #ffffffb8;
+  border-color: var(--border-divider);
+}
+[data-molecular-preview] .product-tile:focus-visible {
+  background: var(--interaction-tint);
+  border-color: var(--ink);
+}
+@media (hover: hover) and (pointer: fine) {
+  [data-molecular-preview] .product-tile:hover {
+    background: var(--interaction-tint);
+    border-color: var(--ink);
+  }
+}
+[data-molecular-preview='product'] {
+  --product-photo-background: transparent;
+}
+[data-molecular-preview='product'] .study-dna--arrival {
+  right: auto;
+  left: -240px;
+  top: -320px;
+  opacity: 0.32;
+  transform: rotate(-32deg);
+}
+[data-molecular-preview='product'] .study-dna--collection {
+  left: auto;
+  right: -280px;
+  top: 30%;
+  opacity: 0.22;
+  transform: rotate(30deg);
+}
+[data-molecular-preview='product'] .study-dna--closing {
+  opacity: 0.22;
+}
+[data-molecular-preview='product'] .study-dna-field::before {
+  display: none;
+}
+[data-molecular-preview='product'] .study-dna-field::after {
+  background: linear-gradient(
+    90deg,
+    #f8fafb00,
+    #f8fafbd9 42%,
+    #f8fafbe6 72%,
+    #f8fafb55
+  );
+}
+[data-molecular-preview='catalog'] .study-dna--arrival {
+  top: -560px;
+  opacity: 0.4;
+  transform: rotate(38deg);
+}
+[data-molecular-preview='catalog'] .study-dna--collection {
+  top: 10%;
+  opacity: 0.24;
+}
+[data-molecular-preview='catalog'] .study-dna--closing {
+  bottom: -740px;
+  opacity: 0.22;
+}
+[data-molecular-preview='about'] .study-dna--arrival {
+  top: -620px;
+  opacity: 0.32;
+  transform: rotate(38deg);
+}
+[data-molecular-preview='about'] .study-dna--collection {
+  top: 25%;
+  opacity: 0.2;
+}
+[data-molecular-preview='about'] .study-dna--closing {
+  bottom: -700px;
+  opacity: 0.28;
+}
+[data-molecular-preview='education'] .study-dna--arrival,
+[data-molecular-preview='utility'] .study-dna--arrival {
+  top: -520px;
+  opacity: 0.34;
+  transform: rotate(32deg);
+}
+[data-molecular-preview='education'] .study-dna--collection,
+[data-molecular-preview='utility'] .study-dna--collection {
+  top: 15%;
+  opacity: 0.16;
+}
+[data-molecular-preview='education'] .study-dna--closing,
+[data-molecular-preview='utility'] .study-dna--closing {
+  bottom: -800px;
+  opacity: 0.2;
+}
+/* A stronger central veil for short pages prevents the fragments from stacking. */
+[data-molecular-preview='catalog'] .study-dna-field::after,
+[data-molecular-preview='education'] .study-dna-field::after,
+[data-molecular-preview='utility'] .study-dna-field::after {
+  background: linear-gradient(
+    90deg,
+    #f8fafb44,
+    #f8fafbc9 25%,
+    #f8fafbe6 60%,
+    #f8fafb44
+  );
+}
+@media (max-width: 759px) {
+  [data-molecular-preview='product'] .study-dna--arrival {
+    width: 620px;
+    left: -230px;
+    top: -320px;
+    opacity: 0.26;
+    transform: rotate(-38deg);
+  }
+  [data-molecular-preview='product'] .study-dna-field::after {
+    background: linear-gradient(
+      90deg,
+      #f8fafb66,
+      #f8fafbc9 35%,
+      #f8fafbbf 75%,
+      #f8fafb66
+    );
+  }
+  [data-molecular-preview='catalog'] .study-dna--arrival,
+  [data-molecular-preview='about'] .study-dna--arrival,
+  [data-molecular-preview='education'] .study-dna--arrival,
+  [data-molecular-preview='utility'] .study-dna--arrival {
+    width: 620px;
+    top: -480px;
+    right: -260px;
+  }
+  [data-molecular-preview='catalog'] .study-dna--closing,
+  [data-molecular-preview='about'] .study-dna--closing,
+  [data-molecular-preview='education'] .study-dna--closing,
+  [data-molecular-preview='utility'] .study-dna--closing {
+    bottom: -480px;
+  }
+}
+@media (min-width: 1000px) {
+  [data-molecular-preview='product'] .study-dna--arrival {
+    left: max(-240px, calc((100% - 1560px) / 2 - 300px));
+    width: clamp(800px, 64vw, 1100px);
+  }
+  [data-molecular-preview='product'] .study-dna--collection {
+    right: max(-280px, calc((100% - 1560px) / 2 - 400px));
+  }
+}

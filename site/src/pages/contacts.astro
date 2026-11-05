@@ -1,0 +1,21 @@
+---
+const destination = new URL('/about/#contacts', Astro.site ?? Astro.url.origin);
+---
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="refresh" content="0;url=/about/#contacts" />
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href={destination} />
+    <title>Связь с командой — G&amp;L Professional</title>
+  </head>
+  <body>
+    <main>
+      <h1>Связь с командой G&amp;L</h1>
+      <a href="/about/#contacts">Открыть контакты команды</a>
+    </main>
+  </body>
+</html>

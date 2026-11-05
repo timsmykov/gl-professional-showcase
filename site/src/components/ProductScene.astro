@@ -1,0 +1,94 @@
+---
+import type { ContentImage } from '@/content/site.types';
+
+interface Props {
+  line: string;
+  title: string;
+  image: ContentImage;
+  loading?: 'eager' | 'lazy';
+  packagingPhoto?: boolean;
+}
+const { line, image, loading = 'lazy', packagingPhoto = false } = Astro.props;
+const scene = { nad: 'ice', plla: 'pearl', cute: 'warm' }[line] ?? 'ice';
+---
+
+<div
+  class:list={[
+    'product-scene',
+    `scene-${scene}`,
+    { 'product-scene--photo': packagingPhoto },
+  ]}
+>
+  <figure class="product-visual">
+    <img
+      src={image.src}
+      srcset={image.srcSet}
+      sizes={
+        packagingPhoto
+          ? '(min-width: 1100px) 520px, (min-width: 760px) 45vw, 90vw'
+          : undefined
+      }
+      alt={image.alt}
+      width={image.width}
+      height={image.height}
+      loading={loading}
+      decoding="async"
+      draggable="false"
+    />
+  </figure>
+</div>
+
+<style>
+  .product-scene.product-scene--photo {
+    height: clamp(260px, 36vw, 420px);
+    max-width: 520px;
+    justify-self: center;
+    width: 100%;
+    border-radius: 24px;
+    background: var(--product-photo-background);
+  }
+  .product-scene--photo .product-visual {
+    width: 100%;
+    height: 100%;
+  }
+  .product-scene--photo .product-visual img {
+    max-height: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 0;
+    pointer-events: none;
+    user-select: none;
+  }
+  .product-visual {
+    position: relative;
+    z-index: 1;
+    width: min(72%, 320px);
+    margin: 0;
+  }
+
+  .product-visual img {
+    display: block;
+    width: 100%;
+    max-height: 360px;
+    border: 0;
+    border-radius: 4px;
+    object-fit: contain;
+    box-shadow: none;
+  }
+
+  .product-visual figcaption {
+    margin-top: 10px;
+    color: var(--muted);
+    font-size: var(--text-meta-size);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  @media (min-width: 1100px) {
+    .product-visual {
+      width: min(78%, 420px);
+    }
+    .product-visual img {
+      max-height: 480px;
+    }
+  }
+</style>

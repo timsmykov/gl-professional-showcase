@@ -1,0 +1,132 @@
+---
+import SiteLayout from '@/layouts/SiteLayout.astro';
+---
+
+<SiteLayout title="Дизайн-студия G&L" noindex>
+  <div class="wrap section review">
+    <h1>Дизайн-студия G&amp;L</h1>
+    <p class="lead">
+      Визуальные исследования на основе текущего сайта G&amp;L.
+    </p>
+    <section aria-labelledby="molecular-study-title">
+      <h2 id="molecular-study-title">Молекулярная палитра</h2>
+      <a class="molecular-study" href="/design-review/molecular/">
+        <img
+          src="/images/decor/dna-scaffold.svg"
+          width="850"
+          height="1800"
+          alt=""
+        />
+        <div>
+          <h3>Тот же лендинг. Другая среда.</h3>
+          <p>
+            Двойная спираль в фоне страницы: прозрачная структура, разная
+            глубина и чистые зоны под текст. Два уровня выраженности.
+          </p>
+          <span class="button">Открыть исследование</span>
+        </div>
+      </a>
+    </section>
+    <section aria-labelledby="navigation-study-title">
+      <h2 id="navigation-study-title">Три направления меню</h2>
+      <div class="navigation-studies">
+        {[
+          {
+            id: 'editorial',
+            title: 'Разворот',
+            description: 'Крупные ссылки и меняющаяся фотография.',
+          },
+          {
+            id: 'atlas',
+            title: 'Три раздела',
+            description: 'Препараты, основатели и обучение в трёх фотопанелях.',
+          },
+          {
+            id: 'shelf',
+            title: 'Каталог',
+            description: 'Раскрывающаяся панель с четырьмя препаратами.',
+          },
+        ].map(({ id, title, description }) => (
+          <a href={`/design-review/navigation/?concept=${id}`}>
+            <img
+              src={`/design-review/navigation/${id}.webp`}
+              width="1440"
+              height="1040"
+              alt=""
+            />
+            <h3>{title}</h3>
+            <p>{description}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+    <div class="archive-link">
+      <a href="/design-review/archive/">Архив дизайн-студии</a>
+      <p>Предыдущие исследования и исходные иллюстрации.</p>
+    </div>
+  </div>
+</SiteLayout>
+<style>
+  .molecular-study {
+    display: grid;
+    gap: 24px;
+    align-items: center;
+    padding: 24px;
+    margin-block: 24px 56px;
+    border: 1px solid #c5d3df;
+    border-radius: 24px;
+    background: linear-gradient(135deg, #f8fafc, #eaf1f8);
+    color: #12304d;
+    text-decoration: none;
+  }
+  .molecular-study img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    object-position: center 40%;
+  }
+  .molecular-study h3 {
+    margin-top: 0;
+  }
+  .molecular-study p {
+    max-width: 40ch;
+  }
+  @media (min-width: 760px) {
+    .molecular-study {
+      grid-template-columns: 1fr 1.2fr;
+    }
+  }
+  .navigation-studies {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: 24px;
+    margin-block: 28px 56px;
+  }
+  .navigation-studies a {
+    display: block;
+    min-width: 0;
+    padding: 16px;
+    border: 1px solid var(--border-divider);
+    color: inherit;
+    text-decoration: none;
+  }
+  .navigation-studies img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .navigation-studies h3 {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+  .navigation-studies p {
+    margin-bottom: 0;
+  }
+  .review h1 {
+    font-size: var(--display-page);
+  }
+  .archive-link {
+    border-top: 1px solid var(--border-divider);
+    padding-top: 24px;
+  }
+</style>

@@ -1,0 +1,158 @@
+---
+import SocialIcon from '@/components/SocialIcon.astro';
+import TelegramButton from '@/components/TelegramButton.astro';
+import {
+  germanTelegramUrl,
+  germanWhatsAppUrl,
+  brandTelegramUrl,
+  brandInstagramUrl,
+} from '@/config/contact-links';
+const brandLinks = [
+  {
+    href: brandTelegramUrl,
+    icon: 'telegram' as const,
+    label: 'Telegram G&L',
+    description: 'Канал бренда',
+  },
+  {
+    href: brandInstagramUrl,
+    icon: 'instagram' as const,
+    label: 'Instagram G&L',
+    description: 'Страница бренда',
+  },
+];
+---
+
+<section
+  id="contacts"
+  class="contacts-page section"
+  aria-labelledby="contacts-heading"
+>
+  <div class="container contact-content">
+    <header class="contact-intro">
+      <h2 id="contacts-heading">На связи с G&amp;L</h2>
+      <p class="lede">
+        По вопросам о препаратах, обучении и работе с G&amp;L обращайтесь в наш
+        бот. Для личного общения с Германом — Telegram или WhatsApp.
+      </p>
+    </header>
+    <div class="contact-actions" id="product-question">
+      <TelegramButton label="Открыть бот G&L" />
+      <a
+        class="button button-outline"
+        href={germanTelegramUrl}
+        target="_blank"
+        rel="noreferrer"
+      >
+        <SocialIcon name="telegram" /> Telegram Германа
+        <span class="visually-hidden">, откроется в новой вкладке</span>
+      </a>
+      <a
+        class="button button-outline"
+        href={germanWhatsAppUrl}
+        target="_blank"
+        rel="noreferrer"
+      >
+        <SocialIcon name="whatsapp" /> WhatsApp
+        <span class="visually-hidden">, откроется в новой вкладке</span>
+      </a>
+    </div>
+    <nav
+      class="public-links"
+      id="brand-channels"
+      aria-label="Социальные сети G&L"
+    >
+      {brandLinks.map(({ href, icon, label, description }) => (
+        <a class="channel-link" href={href} target="_blank" rel="noreferrer">
+          <SocialIcon name={icon} />
+          <span>
+            <strong>{label}</strong>
+            <small>{description}</small>
+          </span>
+          <span class="visually-hidden">, откроется в новой вкладке</span>
+        </a>
+      ))}
+    </nav>
+  </div>
+</section>
+<style>
+  .contacts-page {
+    padding-block: clamp(32px, 4vw, 56px);
+  }
+  .contact-content {
+    min-width: 0;
+  }
+  .contact-intro {
+    max-width: 54ch;
+  }
+  h2 {
+    margin: 0 0 20px;
+    font-size: var(--display-section);
+    line-height: var(--leading-display);
+    letter-spacing: var(--tracking-display);
+  }
+  .lede {
+    margin: 0;
+  }
+  .contact-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 24px;
+  }
+  .contact-actions :global(.button) {
+    gap: 10px;
+    max-width: 100%;
+    justify-content: center;
+  }
+  .contact-actions :global(svg) {
+    flex-shrink: 0;
+  }
+  .public-links {
+    display: grid;
+    gap: 12px;
+    margin-top: 28px;
+  }
+  .channel-link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-height: 72px;
+    padding: 16px 20px;
+    background: var(--interaction-tint);
+    border-radius: 16px;
+    color: var(--color-ink);
+    text-decoration: none;
+    transition: background-color var(--motion-feedback) var(--motion-ease);
+  }
+  .channel-link :global(svg) {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+  }
+  .channel-link strong {
+    display: block;
+    font-size: var(--text-action-size);
+    font-weight: 500;
+  }
+  .channel-link small {
+    display: block;
+    margin-top: 4px;
+    font-size: var(--text-meta-size);
+    color: var(--color-muted);
+  }
+  .channel-link:focus-visible {
+    background: var(--action-soft-hover);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .channel-link:hover {
+      background: var(--action-soft-hover);
+    }
+  }
+  @media (min-width: 760px) {
+    .public-links {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      max-width: 64rem;
+    }
+  }
+</style>

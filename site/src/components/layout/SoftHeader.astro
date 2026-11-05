@@ -1,0 +1,74 @@
+---
+import { siteSections as links } from '@/config/navigation';
+const current = (href: string) =>
+  Astro.url.pathname === href
+    ? 'page'
+    : Astro.url.pathname.startsWith(href)
+      ? 'location'
+      : undefined;
+---
+
+<header class="header">
+  <div class="header-inner wrap">
+    <a class="brand" href="/" aria-label="G&L Professional — на главную">
+      <img src="/images/brand/gl-logo.svg" width="80" height="102" alt="G&L" />
+    </a>
+    <button
+      class="menu-toggle button button-outline"
+      type="button"
+      aria-controls="main-navigation"
+      aria-expanded="false"
+      hidden
+    >
+      Меню
+    </button>
+    <nav id="main-navigation" aria-label="Основная навигация">
+      {links.map((link) => (
+        <a href={link.href} aria-current={current(link.href)}>
+          {link.label}
+        </a>
+      ))}
+    </nav>
+  </div>
+</header>
+<script>
+  const header = document.querySelector<HTMLElement>('.header');
+  const toggle = header?.querySelector<HTMLButtonElement>('.menu-toggle');
+  if (header && toggle) {
+    const narrow = matchMedia('(max-width: 999px)');
+    const nav = header.querySelector<HTMLElement>('#main-navigation')!;
+    const setOpen = (open: boolean, returnFocus = false) => {
+      header.dataset.menuOpen = String(open);
+      toggle.setAttribute('aria-expanded', String(open));
+      nav.inert = narrow.matches && !open;
+      if (returnFocus) toggle.focus();
+    };
+    header.dataset.menuEnhanced = 'true';
+    toggle.hidden = false;
+    setOpen(false);
+    toggle.addEventListener('click', () =>
+      setOpen(toggle.getAttribute('aria-expanded') !== 'true'),
+    );
+    header
+      .querySelectorAll('nav a')
+      .forEach((link) => link.addEventListener('click', () => setOpen(false)));
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape') return;
+      if (narrow.matches && toggle.getAttribute('aria-expanded') === 'true')
+        setOpen(false, true);
+    });
+    for (const type of ['click', 'focusin'])
+      document.addEventListener(type, (event) => {
+        if (event.target instanceof Node && !header.contains(event.target))
+          setOpen(false);
+      });
+    narrow.addEventListener('change', () => setOpen(false));
+    const measure = () =>
+      document.documentElement.style.setProperty(
+        '--header-height',
+        `${header.getBoundingClientRect().height}px`,
+      );
+    new ResizeObserver(measure).observe(header);
+    measure();
+  }
+</script>

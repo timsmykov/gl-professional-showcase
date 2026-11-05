@@ -1,0 +1,56 @@
+<figure
+  class="hero-structure hero-sculpture"
+  data-hero-sculpture
+  aria-hidden="true"
+>
+  <picture>
+    <source
+      media="(max-width: 759px)"
+      srcset="/images/editorial/hero-sculpture-mobile.webp"
+    />
+    <img
+      src="/images/editorial/hero-sculpture.webp"
+      alt=""
+      width="1536"
+      height="1024"
+      draggable="false"
+      loading="eager"
+      fetchpriority="high"
+      decoding="async"
+    />
+  </picture>
+</figure>
+
+<style>
+  .hero-sculpture {
+    margin: 0;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    /* Fade only the empty outer margin; the complete mark stays visible. */
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 10%,
+      #000 90%,
+      transparent
+    );
+  }
+  picture {
+    display: block;
+    mask-image: linear-gradient(
+      to bottom,
+      transparent,
+      #000 6%,
+      #000 94%,
+      transparent
+    );
+  }
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+</style>

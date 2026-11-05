@@ -1,0 +1,109 @@
+---
+const comparison = [
+  { label: 'Рекомбинантный коллаген', cute: '0,1%', ultra: '0,3%' },
+  { label: 'PDRN', cute: '0,2%', ultra: '0,2%' },
+  {
+    label: 'Другие компоненты',
+    cute: 'Идебенон, глицинат цинка, хелат селена, трегалоза',
+    ultra: 'L-карнитин, маннитол и комплекс аминокислот',
+  },
+];
+---
+
+<details class="products-comparison">
+  <summary>Сравнить CUTE и CUTE Ultra</summary>
+  <div class="comparison-content">
+    <div class="comparison-heading">
+      <h2 id="cute-compare-heading">CUTE и CUTE Ultra</h2>
+      <p>Краткое сравнение состава по описанию бренда.</p>
+    </div>
+    <table class="comparison-table">
+      <caption class="visually-hidden">
+        Сравнение компонентов CUTE и CUTE Ultra
+      </caption>
+      <thead>
+        <tr>
+          <th scope="col">Компоненты</th>
+          <th scope="col">CUTE</th>
+          <th scope="col">CUTE Ultra</th>
+        </tr>
+      </thead>
+      <tbody>
+        {comparison.map((row) => (
+          <tr>
+            <th scope="row">{row.label}</th>
+            <td>{row.cute}</td>
+            <td>{row.ultra}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+    <div class="comparison-links">
+      <a class="text-link" href="/products/cute/">
+        Полный состав CUTE
+      </a>
+      <a class="text-link" href="/products/cute-ultra/">
+        Полный состав CUTE Ultra
+      </a>
+    </div>
+  </div>
+</details>
+
+<style>
+  .products-comparison {
+    margin-top: 56px;
+    padding: 20px;
+    border-radius: 16px;
+    background: var(--interaction-tint);
+  }
+  .products-comparison summary {
+    min-height: 44px;
+    cursor: pointer;
+    font-size: var(--text-action-size);
+    text-decoration: none;
+    text-underline-offset: 0.2em;
+  }
+  .comparison-content {
+    padding-top: 24px;
+  }
+  .comparison-heading h2 {
+    margin: 0 0 16px;
+    font-size: var(--display-subsection);
+  }
+  .comparison-heading p {
+    margin-bottom: 24px;
+  }
+  .comparison-table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    font-size: var(--text-meta-size);
+    line-height: 1.5;
+  }
+  .comparison-table th,
+  .comparison-table td {
+    padding: 16px 8px;
+    border-bottom: 1px solid var(--border-divider);
+    text-align: left;
+    vertical-align: top;
+    overflow-wrap: break-word;
+  }
+  .comparison-table th {
+    font-weight: 500;
+  }
+  .comparison-table th:first-child {
+    width: 36%;
+    padding-left: 0;
+  }
+  .comparison-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 28px;
+    margin-top: 20px;
+  }
+  .comparison-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+</style>

@@ -1,0 +1,42 @@
+---
+interface Props {
+  name: 'cell' | 'skin' | 'collagen';
+  alt: string;
+  caption?: string;
+}
+const { name, alt, caption } = Astro.props;
+---
+
+<figure class="scientific-illustration" data-illustration={name}>
+  <img
+    draggable="false"
+    src={`/images/illustrations/${name}.webp`}
+    alt={alt}
+    width="1536"
+    height="1024"
+    loading="lazy"
+    decoding="async"
+  />
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>
+<style>
+  .scientific-illustration {
+    margin: 0;
+    min-width: 0;
+  }
+  img {
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  figcaption {
+    color: var(--muted);
+    font-size: var(--text-meta-size);
+    line-height: 1.6;
+    max-width: 48ch;
+    margin: 12px auto 0;
+  }
+</style>

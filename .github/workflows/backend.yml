@@ -1,0 +1,18 @@
+name: Backend application checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  application:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install uv==0.13.6
+      - run: uv sync --locked --extra test
+        working-directory: backend
+      - run: python scripts/verify_snapshots.py
+      - run: backend/.venv/bin/python scripts/check_application.py
+      - run: backend/.venv/bin/python scripts/check_database.py

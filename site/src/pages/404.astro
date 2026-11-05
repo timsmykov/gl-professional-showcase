@@ -1,0 +1,40 @@
+---
+import SiteLayout from '@/layouts/SiteLayout.astro';
+---
+
+<SiteLayout title="Страница не найдена" noindex>
+  <section class="section">
+    <div class="container error-page">
+      <p class="error-code" aria-hidden="true">
+        404
+      </p>
+      <h1>Страница не найдена</h1>
+      <p class="lede">Проверьте адрес или вернитесь на главную.</p>
+      <div class="button-group">
+        <a class="button" href="/">
+          На главную
+        </a>
+        <a class="button button-outline" href="/products/">
+          Смотреть препараты
+        </a>
+      </div>
+    </div>
+  </section>
+</SiteLayout>
+
+<style>
+  .error-page {
+    max-width: 42rem;
+  }
+  .error-code {
+    margin-block: 0;
+    color: var(--color-muted);
+    font-size: clamp(5rem, 20vw, 12rem);
+    line-height: 1;
+    letter-spacing: -0.08em;
+  }
+
+  h1 {
+    font-size: var(--display-page);
+  }
+</style>

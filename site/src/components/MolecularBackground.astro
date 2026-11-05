@@ -1,0 +1,17 @@
+---
+// Shared decorative scaffold; positioning and strength belong to the page theme.
+---
+
+<div class="study-dna-field" aria-hidden="true">
+  {['arrival', 'collection', 'closing'].map((fragment) => (
+    <img
+      class={`study-dna study-dna--${fragment}`}
+      src="/images/decor/dna-scaffold.svg"
+      width="850"
+      height="1800"
+      alt=""
+      decoding="async"
+      draggable="false"
+    />
+  ))}
+</div>

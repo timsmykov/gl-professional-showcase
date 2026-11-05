@@ -1,0 +1,469 @@
+{
+  "scope": "Selected original application code, migrations, fixtures and application tests. Private deployment recipes and credentials are excluded.",
+  "files": [
+    {
+      "path": "Dockerfile",
+      "sha256": "ecf26109ef532b779d97ddb139b4a2a6c30e8d59b6b72155e463dc15e115acac"
+    },
+    {
+      "path": "Dockerfile.api",
+      "sha256": "e720038abd533a0dff34b70a5e2b99e7c1e9d0e11c07679199d5564744a5237d"
+    },
+    {
+      "path": "alembic.ini",
+      "sha256": "0296942d864ab7082001c61fe3aef4f4906f4e8bb201d2c1df878d0e8f486683"
+    },
+    {
+      "path": "gl_api/__init__.py",
+      "sha256": "de037e8d6b81816854ece31e6fbdeb19fa84a0f314870a47f68df47da1cbf651"
+    },
+    {
+      "path": "gl_api/__main__.py",
+      "sha256": "e8b51f593fb623e8e87111bc4a5d684b5a8d8f2a588732da21976ff547aefb01"
+    },
+    {
+      "path": "gl_api/app.py",
+      "sha256": "5ab92450b51f3bbef8157b9a19ca07fa82815db83c6c30a616132ac361b1bd06"
+    },
+    {
+      "path": "gl_api/atol_pay.py",
+      "sha256": "b57c5efceb1218e436d194d1be3578112c7ef0fed860f79d3f76dc5b1bcf1eea"
+    },
+    {
+      "path": "gl_api/bot_contract.py",
+      "sha256": "48614003634eac89214af961d74c232b17787fd8b2325f61bd8d9264a48b2121"
+    },
+    {
+      "path": "gl_api/bot_repository.py",
+      "sha256": "df46886de6f46904a07b6e8ab1fd9fad9ccaf54b084cab0227cbb0dd94eb36a8"
+    },
+    {
+      "path": "gl_api/checkout.py",
+      "sha256": "27c14351b2ccf75ef77b9e8d418ebfbdefddebc2260c13788886b25aaef3ad2b"
+    },
+    {
+      "path": "gl_api/config.py",
+      "sha256": "323969e4227b7f0b2ac29b0b947f81f4a30cfe906431eab60f3fcd954a20f9a0"
+    },
+    {
+      "path": "gl_api/fiscal.py",
+      "sha256": "9e57029e54756de5b77fc560a783ac2374708943924ba6034aa4342b0e341398"
+    },
+    {
+      "path": "gl_api/fiscal_callback.py",
+      "sha256": "1328049c8928c28562a77366473053020fd1c4bc253d9d7e65fa04e0e330ef6f"
+    },
+    {
+      "path": "gl_api/fiscal_notifications.py",
+      "sha256": "aa4bd567f430e9a305a9343ad575e33001942de0ff58a139f4eba6c7f4658ddc"
+    },
+    {
+      "path": "gl_api/kinescope.py",
+      "sha256": "41ac18bee30b4bec97714310d9c324cd78de319744f50efe75d5129699c4e3a4"
+    },
+    {
+      "path": "gl_api/lifecycle.py",
+      "sha256": "2f916c5f8ae14a00b852efdba2d6df5efdeb012582b78ffb7c4b216892b41c0a"
+    },
+    {
+      "path": "gl_api/order_contract.py",
+      "sha256": "ea9f4280b3dc5d7233880fa529a7167ef9fcbdbf42971b40733458fdaad09e35"
+    },
+    {
+      "path": "gl_api/orders.py",
+      "sha256": "c6fc03f76e087556493f029c853a82209afe2ce8d372a5a28b8291f864a6b9e0"
+    },
+    {
+      "path": "gl_api/payment_config.py",
+      "sha256": "8af3ba43865af1b51754be80cd6bf5a81a99d71ff7627081b9514bc9a9fef1c5"
+    },
+    {
+      "path": "gl_api/payment_worker.py",
+      "sha256": "a723854cfa0603c11f42db5e7eb6a2999c3e340776dbdf6ace60dae55d4f13e1"
+    },
+    {
+      "path": "gl_api/payments.py",
+      "sha256": "5c3c8bd503f58068720557e1a5c84a636fe198a0b730a6eaf06192c4e3bdc901"
+    },
+    {
+      "path": "gl_api/security.py",
+      "sha256": "13f08c900c49ff68c4c34d4ea7ac370b1dec43ee0ab4394eebad57e504625bd9"
+    },
+    {
+      "path": "gl_api/video.py",
+      "sha256": "1119aa48869055260c8291ab666ed061d375a5102a6c79acd8c8fa2ace67811d"
+    },
+    {
+      "path": "gl_api/video_edge.py",
+      "sha256": "a8feeac0410df0a6fc8abde5e5b6f96c6717714edcb7897fc877ca2abf196ef4"
+    },
+    {
+      "path": "gl_bot/__init__.py",
+      "sha256": "a0b76adf6f97477f3078c18f1e1543063538247cb0ed451ce64cdad802d7345a"
+    },
+    {
+      "path": "gl_bot/api_recordings.py",
+      "sha256": "a578f82d27454ea6b6f278f1a8a1ec8a5d9af31a1c5fb143cdd7fdfdab23e1a5"
+    },
+    {
+      "path": "gl_bot/api_repository.py",
+      "sha256": "9d7a64c4843c2fba507aa5fd9ee918ee3763cd686cb1a1b499d0e3c444baa12f"
+    },
+    {
+      "path": "gl_bot/assets/avatar.svg",
+      "sha256": "637b50064eb21f2925d2d13d4435e05221465712a300a0fbc81e213956a0b852"
+    },
+    {
+      "path": "gl_bot/assets/logo-source.svg",
+      "sha256": "528bd83261fc0c3b9296ae3a3b88cbbed264dc88eab930a0299209a694e8d08a"
+    },
+    {
+      "path": "gl_bot/assets/products/catalog.json",
+      "sha256": "fb77e91b7c70abb3ea3f4e968185aed68d337d9267719373bce10f7f354847ec"
+    },
+    {
+      "path": "gl_bot/assets/products/cute-ultra.png",
+      "sha256": "42ed63741b060e2398d86a8cc3bb44dd0cb0c634593c6c03d3333ba96b80a22d"
+    },
+    {
+      "path": "gl_bot/assets/products/cute.png",
+      "sha256": "9556bf50cda9c2336b061f68e99d2f88d8edcc8fd4c01b413d3f70bf7155fa34"
+    },
+    {
+      "path": "gl_bot/assets/products/nad-skin-matrix.png",
+      "sha256": "bcc117a66ca4d4a46b960b4782ab36fced3c16ab5a923421a9ec0aa0aa2f61ca"
+    },
+    {
+      "path": "gl_bot/assets/products/plla-activator.png",
+      "sha256": "5b07bf6750f717b41647e4616c06e50608a8f8fe34e148846d20d2b637cbd2da"
+    },
+    {
+      "path": "gl_bot/buttons.py",
+      "sha256": "bbe88322a9f0c59fe5a04785adffbff3844a1ee31453a572c67f91087b74a8fb"
+    },
+    {
+      "path": "gl_bot/copy.py",
+      "sha256": "316b623fc2900820060bda322b05631c9d2c13810c916ff317d00e1ca7147b3d"
+    },
+    {
+      "path": "gl_bot/flow.py",
+      "sha256": "dba19f4a559ca6ef90b6a6302b090647dd87d5197f959ec80497e15184016d48"
+    },
+    {
+      "path": "gl_bot/poller.py",
+      "sha256": "5fddfb9868f0492a76c0edc482e7e7569bb977f6556fdf2a537c829c972edba7"
+    },
+    {
+      "path": "gl_bot/products.py",
+      "sha256": "a554d2868276c5837f14c07c504d5eb64dfd32df3558e3301f4f2d657601f771"
+    },
+    {
+      "path": "gl_bot/recordings.py",
+      "sha256": "efc659a19ce1039bd7dfdeaeef3acf70339175fc1ec4a6bff04d67f8b12453a3"
+    },
+    {
+      "path": "gl_bot/repository.py",
+      "sha256": "c1f6ce91f6feafb123f4b7981bc189243383cc8986dff9ae660635dee68f34b2"
+    },
+    {
+      "path": "gl_bot/server.py",
+      "sha256": "19752696e7890f5379ab3d1d5e8bb83e905cde616b533291b84537a52d8d5816"
+    },
+    {
+      "path": "gl_bot/settings.py",
+      "sha256": "5ff0e25ff2a4e56ec61a0fa8fc59a1940212a61dd5598367446b2cb79004851c"
+    },
+    {
+      "path": "gl_bot/telegram.py",
+      "sha256": "300b7483ca423adb59fff6bfc4cecb0833c22d3769ed9eb9d438302679966a59"
+    },
+    {
+      "path": "gl_bot/transport.py",
+      "sha256": "8ea509115375fa5bb0d12da62d51579baeafd157896ec713116d7763808a9cd8"
+    },
+    {
+      "path": "migrations/env.py",
+      "sha256": "95fa648b8ee4b73307cd3ff9cfe6f72ef88b5f219c6e75605652d42a215b10be"
+    },
+    {
+      "path": "migrations/legacy_001_init.sql",
+      "sha256": "3f8bbb555427834d5b1bfdbc60b0136bc0873b2bdfca802b8e8498fb6d809321"
+    },
+    {
+      "path": "migrations/roles.py",
+      "sha256": "572b32b8549aed07e0cab1f031390ee8fb26e20a4eebac008017983400ddcc84"
+    },
+    {
+      "path": "migrations/versions/0001_legacy_bot_schema.py",
+      "sha256": "cf12c18808a161c824587d8bda4cdf51aae4065b734b97731c00b1c0f145f295"
+    },
+    {
+      "path": "migrations/versions/0002_purchase_records.py",
+      "sha256": "eff0abe0b2006461845a444f0a3c31237dce4556b6ff987c4bf003254adde8ec"
+    },
+    {
+      "path": "migrations/versions/0003_runtime_read_privileges.py",
+      "sha256": "8d5dc9e038b0f251b376350e92350eeee214223d5acb0a7050dfdcfccbcf9272"
+    },
+    {
+      "path": "migrations/versions/0004_bot_runtime_privileges.py",
+      "sha256": "ecd4f821b8a55be639fe4374485cb1d17bd6f73a150b3e3e2aebe550acf4d0bf"
+    },
+    {
+      "path": "migrations/versions/0005_booking_notification_outbox.py",
+      "sha256": "5a22da8590aa7165495ab66034b6e3e918d9490e518396348a4adf43d394d172"
+    },
+    {
+      "path": "migrations/versions/0006_order_request_idempotency.py",
+      "sha256": "c8b28d4f8206f0204759273d338b633b4e50953dd7bdf7f49596624f37cb300b"
+    },
+    {
+      "path": "migrations/versions/0007_reuse_pending_orders.py",
+      "sha256": "fa59401b9a7e83b88e31f1ee680a3bbeb56227369b49deddfb3519a189b0a5d1"
+    },
+    {
+      "path": "migrations/versions/0008_video_sessions.py",
+      "sha256": "1654ffd208b552949a99e59c209a22844d281abb5cb02a17cbe78a47634c069d"
+    },
+    {
+      "path": "migrations/versions/0009_atol_payment_attempts.py",
+      "sha256": "90ec8732cca144e5f5ed73d0e7f6324bac43b1c1d79c6d74bc7699365b888a88"
+    },
+    {
+      "path": "migrations/versions/0010_receipt_ledger.py",
+      "sha256": "80497a0d59c3de451aeb5dbb1d47b870a94ee6883291966a29dc73cc1afb5a13"
+    },
+    {
+      "path": "migrations/versions/0011_recording_codes.py",
+      "sha256": "307a15e8e3eb8a4d51d0f0f201acdfacfd4c7fce23484b0f136e1d6feac3e3b4"
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "a79853061e3c019c83c1920ed6bf5cdef872bddd324e034b28b468cdb69f14dd"
+    },
+    {
+      "path": "sql/001_init.sql",
+      "sha256": "3f8bbb555427834d5b1bfdbc60b0136bc0873b2bdfca802b8e8498fb6d809321"
+    },
+    {
+      "path": "tests/api/test_api_settings.py",
+      "sha256": "557780f70491b28ad4077b1d81718eb91a66122bf8b14b0fc22d65543e428d57"
+    },
+    {
+      "path": "tests/api/test_app.py",
+      "sha256": "4ffe037441e2fc7d4cdb36895d1ac833f0a65e52b00eee4cab9f9a8798a5f7bf"
+    },
+    {
+      "path": "tests/api/test_atol_egress.py",
+      "sha256": "2f60b928d98149decc5572b44ef78a30dc00ef3831c6ca067f04e5ba17bcfc37"
+    },
+    {
+      "path": "tests/api/test_atol_pay.py",
+      "sha256": "552379f437692c015cadce8495f2426e4343043eaf08e9a2d3ee6f756a786f6e"
+    },
+    {
+      "path": "tests/api/test_bot_contract.py",
+      "sha256": "8c8e3ce0c4c0a9474a0addb26d4d567dac52382f4a01c1ebbf028281ddfca940"
+    },
+    {
+      "path": "tests/api/test_bot_gateway_postgres.py",
+      "sha256": "5dc08e490b1695e8d67676e18c6053b92f039772aad49685a7a105347fbb4c9d"
+    },
+    {
+      "path": "tests/api/test_checkout.py",
+      "sha256": "08e507896ae561babc3aab8bff889dbe9766937bfa33e9accad4e037404bcfc3"
+    },
+    {
+      "path": "tests/api/test_database_tls.py",
+      "sha256": "6a9d8c4375d49054a4176f1fd34bffde8849abf630160ad6cb3f06614155fff4"
+    },
+    {
+      "path": "tests/api/test_fiscal.py",
+      "sha256": "69e7b8747b57cdfda5eb364ef6cc8364c926aebf78622ff77f1f21d63682d259"
+    },
+    {
+      "path": "tests/api/test_fiscal_egress.py",
+      "sha256": "75e0915b6a05d282575abb57ad75a1be9e9eda334d32d92fd025fcea583b768c"
+    },
+    {
+      "path": "tests/api/test_fiscal_notifications.py",
+      "sha256": "2886e2ef38d5f43aac2769c5bad7fe6daf95f93c09fdc40d595b999af936a939"
+    },
+    {
+      "path": "tests/api/test_fiscal_runtime.py",
+      "sha256": "918c0d75e3be55aa3a1127d257fbedc330ae1a9830e4c6676d580b27b2fe3c44"
+    },
+    {
+      "path": "tests/api/test_internal_postgres.py",
+      "sha256": "812b75e0830030310f51c640975b5cb54bd20cdc7ab727993ebf94a4691bc0ba"
+    },
+    {
+      "path": "tests/api/test_kinescope.py",
+      "sha256": "338a47e013c6bc7db935f6bfdaef87e2872e9f4ee4e0de6939e46c0591f2b03e"
+    },
+    {
+      "path": "tests/api/test_kinescope_egress.py",
+      "sha256": "648aa7490a028c8adef4628cf80fbde30a656bbb6c21b0959a7ea5ba558c20b9"
+    },
+    {
+      "path": "tests/api/test_kinescope_runtime.py",
+      "sha256": "25a1ff129a48de4ae2df290213db387427c085862ce64afe90ea2123954388ca"
+    },
+    {
+      "path": "tests/api/test_lifecycle.py",
+      "sha256": "416833e19f5176508aa67c73f4a8f26d9e9e0cead3a4bd3b62ea285604c4611f"
+    },
+    {
+      "path": "tests/api/test_lifecycle_postgres.py",
+      "sha256": "be8213f8bce61dfe14786763de0e89990c95f0e2aa517da644568ca99c8eb7f6"
+    },
+    {
+      "path": "tests/api/test_orders.py",
+      "sha256": "7a9416dc34d53c45595d2026c2177fe952435643656af93e349f85331019540a"
+    },
+    {
+      "path": "tests/api/test_orders_postgres.py",
+      "sha256": "64fc0c3ea8fec69e10bf31155a8b2f2cf6e6fd2c5c01a1b6639aa54c8be8a0e7"
+    },
+    {
+      "path": "tests/api/test_payment_runtime.py",
+      "sha256": "8782186f2f10b7e4dc4b518daf8245f77742e02478d578b73f2a84746a4a6718"
+    },
+    {
+      "path": "tests/api/test_payments_postgres.py",
+      "sha256": "b7e955795df9974b6e2ad45d82d6c55639fc3c02cba5640fa68d0e75c99c74a4"
+    },
+    {
+      "path": "tests/api/test_postgres.py",
+      "sha256": "17be3bda9b93703c178bbc7a1350a263166eadca492eda996306d11b43547ab4"
+    },
+    {
+      "path": "tests/api/test_public_postgres.py",
+      "sha256": "6618e7196fa12eb7a17fac6b5587d42677737ccedcec569d18d7c60228ea201d"
+    },
+    {
+      "path": "tests/api/test_security_boundary.py",
+      "sha256": "f98a3f344c1f9746c02eb1acc5851d4f5bde7acae5ba56e57841201836ef1113"
+    },
+    {
+      "path": "tests/api/test_video_edge.py",
+      "sha256": "4a78b19df357cfe385c34e29315f0705a6fc931f1171bf5a52a3896e112e8cdb"
+    },
+    {
+      "path": "tests/api/test_vm_monitor.py",
+      "sha256": "ca00e1cd12958c0f144a0298c82fa0a5347bac72d6490af80e76f0d7b80a1478"
+    },
+    {
+      "path": "tests/api/test_vm_owner_fixture.py",
+      "sha256": "71166be1fa6ad30de80745dbd31f0b8ec7074fd3bb2afef8522070b186fc456b"
+    },
+    {
+      "path": "tests/api/test_vm_polling_acceptance.py",
+      "sha256": "280fb19e8aff15c0319d3bd03ae1ceab1f8ae4d8da90ea951abb944cb83fae9e"
+    },
+    {
+      "path": "tests/api/test_vm_release.py",
+      "sha256": "89db5df06f62b2a7db76673eade7be41ab95b65cb31adb384845469e379351d4"
+    },
+    {
+      "path": "tests/api/test_vm_restore.py",
+      "sha256": "faaa1ea25b3ffc95eec4cf765f4625553c7ba23374832356d11aa0bb2e81fc2c"
+    },
+    {
+      "path": "tests/api/test_vm_storage.py",
+      "sha256": "323eae23687ece424cd975edb58adc6941da62056919c17799906a25d66868c5"
+    },
+    {
+      "path": "tests/api/test_vm_watchdog.py",
+      "sha256": "3921ed35780606127dfe24794a5cd212f11c1904a35e84702f9f81f4a24cb560"
+    },
+    {
+      "path": "tests/assets/bot-preview.html",
+      "sha256": "7227d81d149ef274b1113cf48eb00c3a7e6b1f7993ec5861710bdeecc3af6d8d"
+    },
+    {
+      "path": "tests/db/test_migrations.py",
+      "sha256": "05e10a1c763ae463d1eeda0b85a22af558175de1e0628bb87bf1e7d7964e6175"
+    },
+    {
+      "path": "tests/render_bot_preview.py",
+      "sha256": "8d750ec746e8b4ed04dcbc5fae28d0cb50a205fd9ea0450afbd480205bff129a"
+    },
+    {
+      "path": "tests/test_api_recordings.py",
+      "sha256": "1d72191118cd2abbc603879a6abce4bc766d6c7f329f3c4ba5817b16a8c18aed"
+    },
+    {
+      "path": "tests/test_api_recordings_postgres.py",
+      "sha256": "d7d3062eb027078b76c33dc8d388cd548399a75ae81826d19b11ec78f96b9e8d"
+    },
+    {
+      "path": "tests/test_api_repository.py",
+      "sha256": "84a141a801cab46519a2a6cf68eb3a511b833f57a02ed70158dc869a4b1de289"
+    },
+    {
+      "path": "tests/test_architecture.py",
+      "sha256": "0a715efe9468f45ef59e3d771d40badfe4b18b636be6eebf4553228cfee2f3ae"
+    },
+    {
+      "path": "tests/test_brand_assets.py",
+      "sha256": "d18cdb77ae2aa59ddba05c62260552eab3ae844be3ae8c6803aa9baa0365f170"
+    },
+    {
+      "path": "tests/test_buttons.py",
+      "sha256": "56439dd549a91977eb05faaa57303ddf38f2e10ee3dc3456dfa68d288c9094a6"
+    },
+    {
+      "path": "tests/test_dev_compose.py",
+      "sha256": "8097d65656422a346ab588a86ced4e6e6cddb7c7cafd77fd2117244f8dedf3d6"
+    },
+    {
+      "path": "tests/test_flow.py",
+      "sha256": "bb0ff054395446a4acc57e5340e43f3e4ad0910ff37512a96c64435eed610670"
+    },
+    {
+      "path": "tests/test_information_screens.py",
+      "sha256": "782014be976f13598a44ed3d524bb72f3f04c0d9007c34fe56b08a74c4c2ba17"
+    },
+    {
+      "path": "tests/test_poller.py",
+      "sha256": "0d9958c8606ca64e89f673fc437201ccddbcb6d1fb60b676b1db73efe169ba58"
+    },
+    {
+      "path": "tests/test_primary_release.py",
+      "sha256": "bfa5cb18ddf1d7710d1130bffac60fea4f73fce0f2482d6d019bc91f7306cf08"
+    },
+    {
+      "path": "tests/test_recording_dialogues.py",
+      "sha256": "fe045d1a73a8e11c06094b8901f8aabd1c3f96c20816388a2766548fa5c876d3"
+    },
+    {
+      "path": "tests/test_repository_integration.py",
+      "sha256": "ea54c1fb5178299285013bd06370d46606c6d268178bc3a544d931e6d93bdbb8"
+    },
+    {
+      "path": "tests/test_rich_products.py",
+      "sha256": "81ff98cc4b740be0c14b9fc2b7cac0e3e5c3c5aba9d85b6140aaf64a40408f03"
+    },
+    {
+      "path": "tests/test_server.py",
+      "sha256": "c33a28117330c982adaf7447821230793c5e36a7c5ffac81bf6dcc94a083d00d"
+    },
+    {
+      "path": "tests/test_settings.py",
+      "sha256": "9db20d40b023afdeeef2f122a010aa98e669f89ad500e1ee4834bb1d769044bc"
+    },
+    {
+      "path": "tests/test_telegram.py",
+      "sha256": "54d1138a61edebb2ce0eb7471694a22c5fdff45c0a2ce644d9163df078e6100d"
+    },
+    {
+      "path": "tests/test_telegram_transport.py",
+      "sha256": "e3df601008b253ad2bcf9fd8f62d7a60e666fe24c26588247a1f2b1b102c8147"
+    },
+    {
+      "path": "uv.lock",
+      "sha256": "d3173b8032484ae9f6fac3fc4091a86eee3aa7cd7f650688df31629a12e77bb3"
+    }
+  ]
+}

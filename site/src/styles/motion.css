@@ -1,0 +1,187 @@
+:root {
+  --motion-feedback: 300ms;
+  --motion-panel: 400ms;
+  --motion-image: 400ms;
+  --motion-breathe: 6400ms;
+  --motion-breathe-y: -6px;
+  --motion-breathe-scale: 1.01;
+  --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+.motion-control {
+  font: inherit;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--ink);
+  border-radius: 24px;
+  min-height: 44px;
+  padding: 10px 16px;
+  cursor: pointer;
+}
+.motion-control[hidden] {
+  display: none;
+}
+.motion-control[aria-pressed='true'] {
+  background: var(--ink);
+  color: var(--paper);
+}
+.motion-control:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 4px;
+}
+.gesture-button {
+  display: block;
+  margin-top: 18px;
+  width: fit-content;
+  pointer-events: auto;
+  font-size: 13px;
+}
+.hero-art {
+  perspective: 1000px;
+}
+.hero-breath,
+.hero-response {
+  width: 100%;
+  height: 100%;
+  transform-origin: center;
+}
+.hero-response {
+  pointer-events: none;
+}
+.motion-ready:not(.motion-static) .hero-breath {
+  animation: material-breath var(--motion-breathe) ease-in-out infinite paused;
+}
+.motion-ready.motion-breathing:not(.motion-static) .hero-breath {
+  animation-play-state: running;
+}
+@keyframes material-breath {
+  50% {
+    transform: translateY(var(--motion-breathe-y))
+      scale(var(--motion-breathe-scale));
+  }
+}
+.proximity {
+  padding: 0;
+  background: var(--ice);
+}
+.proximity-stage {
+  position: relative;
+  padding: 60px 6% 30px;
+}
+.proximity-text {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+}
+.proximity-text h2 {
+  font-size: clamp(42px, 5.4vw, 78px);
+  overflow-wrap: anywhere;
+}
+.proximity-chapters {
+  list-style: none;
+  padding: 0;
+  line-height: 2.4;
+  font-size: 14px;
+}
+.proximity-chapters li {
+  border-left: 2px solid transparent;
+  padding-left: 18px;
+}
+.proximity-chapters .current {
+  border-left-color: var(--ink);
+}
+.proximity-caption {
+  font-size: 12px;
+}
+.proximity-art {
+  height: 420px;
+  position: relative;
+  overflow: clip;
+}
+.proximity-ribbon {
+  width: 125%;
+  height: 100%;
+  margin-left: -10%;
+  --cutout: var(--ice);
+}
+.proximity-track {
+  height: 2px;
+  background: #203e4924;
+}
+.proximity-track i {
+  display: block;
+  height: 100%;
+  background: var(--ink);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.proximity.is-sticky {
+  height: 180svh;
+}
+.proximity.is-sticky .proximity-stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  padding: 6%;
+  display: flex;
+  align-items: center;
+}
+.proximity.is-sticky .proximity-text {
+  width: 48%;
+}
+.proximity.is-sticky .proximity-art {
+  position: absolute;
+  inset: 0 -18% 0 auto;
+  width: 83%;
+  height: 100%;
+}
+.proximity.is-sticky .proximity-ribbon {
+  width: 100%;
+  margin: 0;
+}
+.proximity.is-sticky .proximity-track {
+  position: absolute;
+  bottom: 30px;
+  left: 6%;
+  width: 88%;
+}
+.button,
+.text-link,
+.motion-control {
+  transition:
+    background-color var(--motion-feedback),
+    color var(--motion-feedback);
+}
+html.motion-static {
+  scroll-behavior: auto;
+}
+.motion-static .button span,
+.motion-static .text-link span {
+  transform: none;
+}
+.motion-static *,
+.motion-static *::before,
+.motion-static *::after {
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+@media (min-width: 760px) {
+  :root {
+    --motion-breathe-y: -10px;
+    --motion-breathe-scale: 1.018;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-breath {
+    animation: none !important;
+  }
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+  .button:hover span,
+  .text-link:hover span {
+    transform: none;
+  }
+}

@@ -1,0 +1,41 @@
+/* Shared semantic utilities; visual rules live in the Soft Matter system. */
+html {
+  text-size-adjust: 100%;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  -webkit-user-drag: none;
+  user-select: none;
+}
+.section {
+  padding-block: var(--section-space);
+}
+.section--compact {
+  padding-block: var(--section-compact-space);
+}
+.lede {
+  max-width: 680px;
+  color: var(--muted);
+  font-size: var(--text-lead-size);
+  line-height: 1.4;
+}
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+@media (min-width: 760px) {
+  .section {
+    padding-block: var(--section-space);
+  }
+}

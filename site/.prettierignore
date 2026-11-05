@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.astro/
+.playwright-cli/
+playwright-report/
+test-results/
+output/
+docs/design-studies/
+.artifacts/
+public/design-studies/microworld/player.js
+public/design-studies/microworld/scene-spec.json

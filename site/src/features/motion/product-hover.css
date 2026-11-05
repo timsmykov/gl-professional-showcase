@@ -1,0 +1,17 @@
+[data-product-hover] > img {
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  transform: translate(0, 0) scale(1);
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  [data-product-hover] > img {
+    transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  [data-product-hover][data-active='true'] {
+    z-index: 1;
+  }
+  [data-product-hover][data-active='true'] > img {
+    transform: translate(var(--box-x, 0px), var(--box-y, 0px)) scale(1.075);
+  }
+}

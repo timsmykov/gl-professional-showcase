@@ -1,0 +1,94 @@
+---
+import SiteLayout from '@/layouts/SiteLayout.astro';
+import { contentRepository } from '@/lib/content';
+const products = await contentRepository.listProducts();
+const webinars = await contentRepository.listWebinars();
+---
+
+<SiteLayout
+  title="Карта сайта"
+  description="Все разделы, препараты и опубликованные вебинары G&L Professional."
+>
+  <section class="section wrap">
+    <h1>Карта сайта</h1>
+    <p>Выберите раздел или сразу откройте нужный препарат или вебинар.</p>
+    <nav aria-label="Дерево страниц сайта" class="site-tree">
+      <ul>
+        <li>
+          <a href="/">Главная</a>
+          <ul>
+            <li>
+              <a href="/products/">Препараты</a>
+              <ul>
+                {products.map((product) => (
+                  <li>
+                    <a href={`/products/${product.slug}/`}>{product.title}</a>
+                  </li>
+                ))}
+              </ul>
+            </li>
+            <li>
+              <a href="/webinars/">Вебинары</a>
+              {webinars.length ? (
+                <ul>
+                  {webinars.map((webinar) => (
+                    <li>
+                      <a href={`/webinars/${webinar.slug}/`}>{webinar.title}</a>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p>
+                  Вебинары G&amp;L.{' '}
+                  <a href="/about/#contacts">Связь с командой</a>
+                </p>
+              )}
+            </li>
+            <li>
+              <a href="/about/">О бренде и команде</a>
+            </li>
+            <li>
+              <a href="/about/#contacts">Связь с командой</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </section>
+</SiteLayout>
+<style>
+  h1 {
+    font-size: var(--display-page);
+  }
+  .site-tree {
+    margin-top: 32px;
+    max-width: 760px;
+  }
+  ul {
+    list-style: none;
+    padding-left: 20px;
+    border-left: 1px solid var(--color-border);
+  }
+  li {
+    position: relative;
+    margin-block: 8px;
+  }
+  li::before {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 1px;
+    background: var(--color-border);
+    left: -20px;
+    top: 22px;
+  }
+  a {
+    display: inline-flex;
+    align-items: center;
+    min-width: 44px;
+    min-height: 44px;
+  }
+  p {
+    margin-block: 8px;
+  }
+</style>

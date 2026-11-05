@@ -1,0 +1,492 @@
+---
+import type { ContentImage } from '@/content/site.types';
+
+interface Props {
+  images: ContentImage[];
+  label: string;
+  variant?: 'visuals' | 'clinical';
+}
+
+interface ImageGroup {
+  key: string;
+  label: string;
+  images: ContentImage[];
+}
+
+const { images, label, variant = 'visuals' } = Astro.props;
+const clinicalGroups: ImageGroup[] = [];
+if (variant === 'clinical') {
+  for (const image of images) {
+    const key = image.caseKey ?? image.src;
+    let group = clinicalGroups.find((item) => item.key === key);
+    if (!group) {
+      group = {
+        key,
+        label: image.caseLabel ?? `Пример работы ${clinicalGroups.length + 1}`,
+        images: [],
+      };
+      clinicalGroups.push(group);
+    }
+    group.images.push(image);
+  }
+}
+---
+
+{images.length > 0 && (
+  <div class="gallery" data-gallery>
+    {variant === 'clinical' ? (
+      <div class="case-list" aria-label={label}>
+        {clinicalGroups.map((group) => (
+          <details class="case">
+            <summary>
+              <img
+                src={group.images[0]!.src}
+                alt=""
+                width={group.images[0]!.width}
+                height={group.images[0]!.height}
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="case-title">
+                <strong>{group.label}</strong>
+              </span>
+              <span class="case-action" aria-hidden="true">
+                Показать
+              </span>
+            </summary>
+            <ul class="media-grid media-grid--clinical">
+              {group.images.map((image) => (
+                <li>
+                  <figure>
+                    <a
+                      href={image.src}
+                      target="_blank"
+                      rel="noopener"
+                      data-gallery-open
+                      data-case-key={group.key}
+                      data-case-label={group.label}
+                      aria-label={`Увеличить: ${image.alt}`}
+                    >
+                      <img
+                        src={image.src}
+                        alt={image.alt}
+                        width={image.width}
+                        height={image.height}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <span class="media-action" aria-hidden="true">
+                        Увеличить
+                      </span>
+                    </a>
+                    {image.caption && <figcaption>{image.caption}</figcaption>}
+                  </figure>
+                </li>
+              ))}
+            </ul>
+          </details>
+        ))}
+      </div>
+    ) : (
+      <ul class="media-grid media-grid--visuals" aria-label={label}>
+        {images.map((image) => (
+          <li>
+            <figure>
+              <a
+                href={image.src}
+                target="_blank"
+                rel="noopener"
+                data-gallery-open
+                aria-label={`Увеличить: ${image.alt}`}
+              >
+                <img
+                  src={image.src}
+                  srcset={image.srcSet}
+                  sizes="(min-width: 1920px) 770px, (min-width: 760px) 48vw, 94vw"
+                  alt={image.alt}
+                  width={image.width}
+                  height={image.height}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span class="media-action" aria-hidden="true">
+                  Увеличить
+                </span>
+              </a>
+              {image.caption && <figcaption>{image.caption}</figcaption>}
+            </figure>
+          </li>
+        ))}
+      </ul>
+    )}
+    <dialog
+      class="gallery-dialog"
+      aria-label={`Увеличенный просмотр: ${label}`}
+    >
+      <div class="gallery-dialog__head">
+        <p data-gallery-caption></p>
+        <button type="button" data-gallery-close aria-label="Закрыть просмотр">
+          Закрыть
+        </button>
+      </div>
+      <img data-gallery-image alt="" />
+      <div class="gallery-dialog__controls">
+        <button type="button" data-gallery-prev>
+          Предыдущее
+        </button>
+        <button type="button" data-gallery-next>
+          Следующее
+        </button>
+      </div>
+    </dialog>
+  </div>
+)}
+
+<script>
+  import { stateMotion } from '@/features/motion/tokens';
+  for (const root of document.querySelectorAll<HTMLElement>('[data-gallery]')) {
+    const dialog = root.querySelector<HTMLDialogElement>('.gallery-dialog');
+    const image = root.querySelector<HTMLImageElement>('[data-gallery-image]');
+    const caption = root.querySelector<HTMLElement>('[data-gallery-caption]');
+    const links = [
+      ...root.querySelectorAll<HTMLAnchorElement>('[data-gallery-open]'),
+    ];
+    const controls = root.querySelector<HTMLElement>(
+      '.gallery-dialog__controls',
+    );
+    if (!dialog || !image || !caption || !links.length || !dialog.showModal)
+      continue;
+    let activeLinks = links;
+    let index = 0;
+    let imageAnimation: Animation | undefined;
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+    image.addEventListener('load', () => {
+      imageAnimation?.cancel();
+      if (dialog.open && !reduce.matches)
+        imageAnimation = image.animate([{ opacity: 0.65 }, { opacity: 1 }], {
+          duration: stateMotion.content,
+          easing: stateMotion.ease,
+        });
+    });
+    let panelAnimation: Animation | undefined;
+    let closing = false;
+    const finishClose = () => {
+      panelAnimation?.cancel();
+      panelAnimation = undefined;
+      closing = false;
+      delete dialog.dataset.closing;
+      dialog.style.removeProperty('--backdrop-opacity');
+      dialog.close();
+    };
+    const close = () => {
+      if (!dialog.open || closing) return;
+      const opacity = getComputedStyle(dialog).opacity;
+      const transform = getComputedStyle(dialog).transform;
+      panelAnimation?.cancel();
+      if (reduce.matches) {
+        finishClose();
+        return;
+      }
+      closing = true;
+      dialog.style.setProperty(
+        '--backdrop-opacity',
+        getComputedStyle(dialog, '::backdrop').opacity,
+      );
+      dialog.dataset.closing = 'true';
+      panelAnimation = dialog.animate(
+        [
+          { opacity, transform },
+          { opacity: 0, transform: 'translateY(10px)' },
+        ],
+        {
+          duration: stateMotion.content,
+          easing: stateMotion.ease,
+          fill: 'forwards',
+        },
+      );
+      panelAnimation.onfinish = finishClose;
+    };
+    reduce.addEventListener('change', () => {
+      imageAnimation?.cancel();
+      panelAnimation?.cancel();
+      if (closing) finishClose();
+    });
+    dialog.addEventListener('cancel', (event) => {
+      event.preventDefault();
+      close();
+    });
+    let opener: HTMLAnchorElement | null = null;
+    const show = (nextIndex: number) => {
+      index = (nextIndex + activeLinks.length) % activeLinks.length;
+      const link = activeLinks[index]!;
+      const thumb = link.querySelector('img');
+      image.src = link.href;
+      image.alt = thumb?.alt ?? '';
+      caption.textContent =
+        link.dataset.caseLabel ?? link.querySelector('img')?.alt ?? '';
+    };
+    links.forEach((link) => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        opener = link;
+        activeLinks = link.dataset.caseKey
+          ? links.filter(
+              (item) => item.dataset.caseKey === link.dataset.caseKey,
+            )
+          : links;
+        if (controls) controls.hidden = activeLinks.length <= 1;
+        show(activeLinks.indexOf(link));
+        panelAnimation?.cancel();
+        closing = false;
+        delete dialog.dataset.closing;
+        dialog.showModal();
+        if (!reduce.matches)
+          panelAnimation = dialog.animate(
+            [
+              { opacity: 0, transform: 'translateY(10px)' },
+              { opacity: 1, transform: 'none' },
+            ],
+            { duration: stateMotion.content, easing: stateMotion.ease },
+          );
+      });
+    });
+    root
+      .querySelector('[data-gallery-close]')
+      ?.addEventListener('click', close);
+    root
+      .querySelector('[data-gallery-prev]')
+      ?.addEventListener('click', () => show(index - 1));
+    root
+      .querySelector('[data-gallery-next]')
+      ?.addEventListener('click', () => show(index + 1));
+    dialog.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft') show(index - 1);
+      if (event.key === 'ArrowRight') show(index + 1);
+    });
+    dialog.addEventListener('close', () => {
+      imageAnimation?.cancel();
+      panelAnimation?.cancel();
+      closing = false;
+      delete dialog.dataset.closing;
+      opener?.focus();
+    });
+  }
+</script>
+
+<style>
+  .media-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .media-grid figure {
+    margin: 0;
+  }
+  .media-grid a {
+    text-decoration: none;
+    display: block;
+    position: relative;
+    min-height: var(--control-height);
+    border-radius: 18px;
+    overflow: hidden;
+  }
+  .media-grid img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 18px;
+    background: var(--ice);
+  }
+  .media-grid--visuals img {
+    aspect-ratio: 4 / 5;
+    object-fit: contain;
+  }
+  .media-grid--clinical img {
+    aspect-ratio: 1;
+    object-fit: contain;
+    border: 1px solid var(--color-border);
+    background: #f5f2ea;
+  }
+  .media-action {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    border-radius: 100px;
+    background: #f8f7f0ed;
+    color: var(--color-ink);
+    padding: 8px 14px;
+    font-size: var(--text-meta-size);
+    font-weight: 700;
+  }
+  figcaption {
+    margin-top: 8px;
+    color: var(--muted);
+    font-size: var(--text-meta-size);
+  }
+  .case-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    align-items: start;
+  }
+  .case {
+    min-width: 0;
+    border-radius: 16px;
+    background: var(--interaction-tint);
+    padding: 12px;
+  }
+  .case summary {
+    display: grid;
+    gap: 12px;
+    min-height: 44px;
+    cursor: pointer;
+    list-style: none;
+  }
+  .case summary::-webkit-details-marker {
+    display: none;
+  }
+  .case summary img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: contain;
+    border-radius: 10px;
+  }
+  .case-title {
+    min-width: 0;
+    font-size: var(--text-meta-size);
+    overflow-wrap: anywhere;
+  }
+  .case-action {
+    max-width: 100%;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    justify-self: start;
+    color: var(--color-ink);
+    font-size: 0.875rem;
+    padding: 8px 12px;
+    border-radius: 100px;
+    background: var(--color-paper);
+  }
+  .case[data-expanded='true'] .case-action,
+  .case[open]:not([data-expanded='false']) .case-action {
+    font-size: 0;
+  }
+  .case[data-expanded='true'] .case-action::after,
+  .case[open]:not([data-expanded='false']) .case-action::after {
+    content: 'Скрыть';
+    font-size: 0.875rem;
+  }
+  @media (min-width: 1000px) {
+    .case-list {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .case {
+      padding: 20px;
+    }
+  }
+  .case .media-action {
+    position: static;
+    display: block;
+    min-height: 44px;
+    padding: 12px 8px;
+    border-radius: 0;
+    text-align: center;
+    overflow-wrap: anywhere;
+    font-size: 0.875rem;
+  }
+  .case .media-grid {
+    grid-template-columns: minmax(0, 1fr);
+    padding-block: 16px 28px;
+  }
+  .gallery-dialog {
+    width: min(96vw, 1100px);
+    max-width: none;
+    max-height: calc(100dvh - 24px);
+    overflow: auto;
+    border: 0;
+    border-radius: 20px;
+    background: #f8f7f0;
+    color: var(--color-ink);
+    padding: 16px;
+  }
+  .gallery-dialog::backdrop {
+    background: #112731d9;
+    animation: backdrop-enter var(--motion-panel) var(--motion-ease);
+  }
+  .gallery-dialog[data-closing]::backdrop {
+    animation: backdrop-exit var(--motion-panel) var(--motion-ease) forwards;
+  }
+  @keyframes backdrop-enter {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes backdrop-exit {
+    from {
+      opacity: var(--backdrop-opacity, 1);
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .gallery-dialog::backdrop {
+      animation: none !important;
+    }
+  }
+  .gallery-dialog__head,
+  .gallery-dialog__controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .gallery-dialog__controls[hidden] {
+    display: none;
+  }
+  .gallery-dialog__head p {
+    margin: 0;
+  }
+  .gallery-dialog button {
+    min-height: var(--control-height);
+    border: 1px solid var(--color-border);
+    border-radius: 100px;
+    background: white;
+    color: var(--color-ink);
+    padding: 8px 14px;
+    font: inherit;
+    font-size: var(--text-action-size);
+    cursor: pointer;
+    transition:
+      background-color var(--motion-feedback) var(--motion-ease),
+      color var(--motion-feedback) var(--motion-ease);
+  }
+  .gallery-dialog button:is(:hover, :focus-visible) {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .gallery-dialog > img {
+    display: block;
+    width: 100%;
+    height: min(60dvh, 760px);
+    max-height: min(70dvh, 900px);
+    object-fit: contain;
+    margin-block: 12px;
+  }
+  @media (min-width: 760px) {
+    .media-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .media-grid--clinical {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+</style>

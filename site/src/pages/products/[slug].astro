@@ -1,0 +1,362 @@
+---
+import type { GetStaticPaths } from 'astro';
+
+import SiteLayout from '@/layouts/SiteLayout.astro';
+import TelegramButton from '@/components/TelegramButton.astro';
+import CuteComparison from '@/components/products/CuteComparison.astro';
+import { contentRepository } from '@/lib/content';
+import CollagenExplainer from '@/components/products/CollagenExplainer.astro';
+import ProductScene from '@/components/ProductScene.astro';
+import ProductGallery from '@/components/products/ProductGallery.astro';
+
+export const getStaticPaths = (async () => {
+  const products = await contentRepository.listProducts();
+  return products.map((product) => ({
+    params: { slug: product.slug },
+    props: { product },
+  }));
+}) satisfies GetStaticPaths;
+
+const { product } = Astro.props;
+const products = await contentRepository.listProducts();
+// Detailed composition is published once, below the compact presentation facts.
+const presentationFacts = product.facts.filter(
+  (fact) => !fact.label.startsWith('Ключевые компоненты'),
+);
+---
+
+<SiteLayout title={product.title} description={product.summary}>
+  <article class="section product-page">
+    <div class="container product-detail">
+      <div class="split product-intro">
+        <ProductScene
+          title={product.title}
+          line={product.line}
+          image={product.packagingPhoto?.hero ?? product.cover}
+          packagingPhoto={Boolean(product.packagingPhoto)}
+          loading="eager"
+        />
+        <div class="product-intro-copy">
+          <h1>{product.title}</h1>
+          <p class="lede">{product.summary}</p>
+          <div class="button-group">
+            <TelegramButton />
+          </div>
+          <section aria-labelledby="product-facts" class="product-facts">
+            <h2 id="product-facts">Характеристики</h2>
+            <dl>
+              {presentationFacts.map((fact) => (
+                <div>
+                  <dt>{fact.label}</dt>
+                  <dd>{fact.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </section>
+        </div>
+      </div>
+
+      <section aria-labelledby="brand-description" class="brand-description">
+        <h2 id="brand-description">Состав и описание</h2>
+        <div class="brand-description__section">
+          <h3>Состав</h3>
+          <p>{product.brandCopy.composition}</p>
+        </div>
+        {product.line === 'cute' && (
+          <CollagenExplainer currentSlug={product.slug} />
+        )}
+        <div class="brand-description__section">
+          <h3>Описание</h3>
+          <p>{product.brandCopy.description}</p>
+        </div>
+        <details class="product-features">
+          <summary>
+            <h3>Особенности</h3>
+          </summary>
+          <div class="product-features__copy">
+            {product.brandCopy.uniqueness.map((paragraph) => (
+              <p>{paragraph}</p>
+            ))}
+          </div>
+        </details>
+      </section>
+      {product.line === 'cute' && <CuteComparison />}
+      {product.clinicalImages.length > 0 && (
+        <section aria-labelledby="clinical-heading">
+          <h2 id="clinical-heading">Примеры работ</h2>
+          <ProductGallery
+            images={product.clinicalImages}
+            label={`Примеры работ ${product.title}`}
+            variant="clinical"
+          />
+        </section>
+      )}
+      <div class="contact-action" id="product-contact">
+        <div>
+          <h2>Вопрос о {product.title}</h2>
+        </div>
+        <div class="button-group">
+          <TelegramButton />
+        </div>
+      </div>
+      <section aria-labelledby="related-heading">
+        <h2 id="related-heading">Другие препараты</h2>
+        <nav aria-label="Другие препараты">
+          <ul class="related-products">
+            {products
+              .filter((item) => item.slug !== product.slug)
+              .map((item) => {
+                const image = item.packagingPhoto?.card ?? item.cover;
+                return (
+                  <li>
+                    <a class="related-card" href={`/products/${item.slug}/`}>
+                      <img
+                        src={image.src}
+                        srcset={image.srcSet}
+                        sizes="(min-width: 600px) 240px, 88px"
+                        alt=""
+                        width={image.width}
+                        height={image.height}
+                        loading="lazy"
+                        decoding="async"
+                        draggable="false"
+                      />
+                      <span>{item.title}</span>
+                    </a>
+                  </li>
+                );
+              })}
+          </ul>
+        </nav>
+      </section>
+    </div>
+  </article>
+</SiteLayout>
+
+<style>
+  .related-products {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin: 24px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .related-products li {
+    min-width: 0;
+  }
+  .related-card {
+    display: grid;
+    gap: 12px;
+    height: 100%;
+    min-height: 44px;
+    min-width: 0;
+    padding: 16px;
+    border: 1px solid var(--border-divider);
+    border-radius: 12px;
+    color: var(--color-ink);
+    text-decoration: none;
+    transition:
+      background-color var(--motion-feedback) var(--motion-ease),
+      border-color var(--motion-feedback) var(--motion-ease);
+  }
+  .related-card:focus-visible {
+    background: var(--interaction-tint);
+    border-color: var(--color-ink);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .related-card:hover {
+      background: var(--interaction-tint);
+      border-color: var(--color-ink);
+    }
+  }
+  .related-card img {
+    display: block;
+    width: 100%;
+    height: 96px;
+    object-fit: contain;
+  }
+  .related-card span {
+    overflow-wrap: anywhere;
+    font-size: var(--text-meta-size);
+    line-height: 1.35;
+  }
+  @media (max-width: 599px) {
+    .related-products {
+      gap: 8px;
+    }
+    .related-card {
+      padding: 8px;
+      gap: 8px;
+    }
+    .related-card img {
+      height: 72px;
+    }
+    .related-card span {
+      font-size: 0.875rem;
+    }
+  }
+  .product-page {
+    padding-top: 24px;
+  }
+  .product-intro {
+    align-items: center;
+    gap: 24px;
+  }
+  .product-intro :global(.product-scene--photo) {
+    height: 180px;
+    order: 0;
+  }
+  .product-intro h1 {
+    font-size: clamp(2rem, 3.5vw, 4rem);
+  }
+  .product-intro .lede {
+    font-size: var(--text-body-size);
+    margin-block: 0;
+  }
+  @media (min-width: 760px) {
+    .product-intro :global(.product-scene--photo) {
+      height: clamp(280px, 30vw, 420px);
+    }
+  }
+  .product-features {
+    border: 0;
+    border-radius: 16px;
+    background: var(--interaction-tint);
+    padding-inline: 20px;
+    margin-block: 24px;
+  }
+  .product-features summary {
+    padding-block: 18px;
+    min-height: 44px;
+    cursor: pointer;
+  }
+  .product-features summary h3 {
+    margin: 0;
+    display: inline;
+    font-size: var(--text-summary-size);
+  }
+  .product-features__copy {
+    max-width: 60ch;
+    overflow-wrap: anywhere;
+    line-height: 1.65;
+    padding-bottom: 12px;
+  }
+  .product-features__copy p {
+    margin-block: 0 20px;
+  }
+  .product-intro-copy,
+  .brand-description,
+  .product-facts {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+  .product-intro .product-facts {
+    margin-block: 24px 0;
+    padding-top: 0;
+    border: 0;
+  }
+  .product-facts h2 {
+    font-size: var(--text-summary-size);
+    margin-block: 0 12px;
+  }
+  .product-facts dl {
+    display: grid;
+    gap: 0;
+    margin-block: 0;
+  }
+  .product-facts dl > div {
+    display: grid;
+    gap: 8px;
+    padding-block: 16px;
+  }
+  .product-facts dt {
+    color: var(--color-muted);
+    font-size: var(--text-meta-size);
+  }
+  .product-facts dd {
+    margin: 0;
+    line-height: 1.55;
+  }
+  .brand-description {
+    width: 100%;
+  }
+  .brand-description__section {
+    margin-block: 28px;
+    overflow-wrap: anywhere;
+  }
+  .brand-description__section h3 {
+    margin-block: 0 12px;
+    font-size: var(--text-summary-size);
+  }
+  .brand-description__section p {
+    margin-block: 0 16px;
+    line-height: 1.65;
+  }
+
+  h1 {
+    margin-block: 0 1rem;
+    font-size: var(--display-page);
+  }
+
+  section {
+    margin-block: 3rem;
+    padding-top: 2rem;
+  }
+
+  section > p {
+    max-width: 48rem;
+    color: var(--muted);
+  }
+
+  .contact-action {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-block: 3rem;
+    border-radius: 28px;
+    background: var(--surface-pause);
+    padding: 24px;
+  }
+
+  .contact-action p {
+    max-width: 34rem;
+    margin: 0;
+  }
+  .contact-action h2 {
+    margin-block: 0;
+    font-size: var(--display-subsection);
+  }
+  .split .button-group {
+    margin-top: 24px;
+  }
+  @media (min-width: 760px) {
+    .product-facts dl > div {
+      grid-template-columns: minmax(0, 0.4fr) minmax(0, 0.6fr);
+      gap: 24px;
+    }
+  }
+  @media (min-width: 1100px) {
+    .brand-description__section {
+      display: grid;
+      grid-template-columns: minmax(0, 0.28fr) minmax(0, 0.72fr);
+      gap: 32px;
+      align-items: start;
+    }
+    .brand-description__section p {
+      max-width: 62ch;
+    }
+    .product-features__copy {
+      display: grid;
+      grid-template-columns: minmax(0, 0.28fr) minmax(0, 0.72fr);
+      column-gap: 32px;
+      max-width: none;
+    }
+    .product-features__copy p {
+      grid-column: 2;
+      max-width: 62ch;
+    }
+  }
+</style>

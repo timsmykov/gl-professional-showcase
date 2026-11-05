@@ -1,0 +1,693 @@
+{
+  "scope": "Original website code and selected non-clinical public media. Clinical photographs and review assets are not redistributed.",
+  "files": [
+    {
+      "path": ".prettierignore",
+      "sha256": "bf9292496265c20bda83be5f4f62dc35968b2acfaa9412fdb8909918b34291ed"
+    },
+    {
+      "path": ".prettierrc.json",
+      "sha256": "2acb3f845613f7749bd4c00bd67e9ca51ffcd441b9b1429fdc29c7297a737526"
+    },
+    {
+      "path": "astro.config.ts",
+      "sha256": "f4dac3c4f7b1508afca4108bff1ad0d40d1727ef37cbbd258ffc888ad9f8b2d3"
+    },
+    {
+      "path": "eslint.config.js",
+      "sha256": "84e7975ec55127ae0ff90166f9ff5ee180a9392cf3ee3c50fba2959b081e2e0c"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "18891d78ad956ea5ec77586b12e766379d703e8b15cdfed88f3ca2f4523f11b1"
+    },
+    {
+      "path": "package.json",
+      "sha256": "2a9cabcb8126a1092c7677f7645af61cfa4a496a95244c4341a19bcd881a2fe8"
+    },
+    {
+      "path": "public/apple-touch-icon.png",
+      "sha256": "9b86098ec7c2416bdf1f404a4b44d82146702457e000caf56e8be144c86b53d5"
+    },
+    {
+      "path": "public/favicon-32.png",
+      "sha256": "3cffb5a60059b0047007c66207ce5f76979cac61dc8dc4c246b9dc11eadc1bbe"
+    },
+    {
+      "path": "public/favicon.ico",
+      "sha256": "f1870d54d0d6d4cc18765c95f55ded927ad3f2c8f53a690acd2d508497a0a12d"
+    },
+    {
+      "path": "public/favicon.svg",
+      "sha256": "804d38c3108159895910cf67f6a68f1794a296da1983f01160d18355ef676116"
+    },
+    {
+      "path": "public/images/brand/gl-logo.svg",
+      "sha256": "528bd83261fc0c3b9296ae3a3b88cbbed264dc88eab930a0299209a694e8d08a"
+    },
+    {
+      "path": "public/images/brand/gl-mark.png",
+      "sha256": "b90836f0e371642399d3c64fd128bf778bc728e913207bbb57e00684c5b981e6"
+    },
+    {
+      "path": "public/images/decor/dna-scaffold.svg",
+      "sha256": "25d13070aa39bbee773b13877d8738c8b5a7b3ad95c1218198d3467ba7bce4f9"
+    },
+    {
+      "path": "public/images/editorial/hero-boxes/cute-ultra.webp",
+      "sha256": "f3b07b265917dcb1462a83523732dda213a086745ddbdfb3be798fdcf16146b3"
+    },
+    {
+      "path": "public/images/editorial/hero-boxes/cute.webp",
+      "sha256": "c3a626e0d01602ec13887de31b619b6071df5f7f215a752454f2d92b7ec71f2c"
+    },
+    {
+      "path": "public/images/editorial/hero-boxes/nad.webp",
+      "sha256": "04d4f00c925c4d727e5307d2651aaec664033f8ba1407583e71ede19768dae94"
+    },
+    {
+      "path": "public/images/editorial/hero-boxes/plla.webp",
+      "sha256": "f47eafbb1dd5e293681f20491de4f24513a9ae64944ba207a5e6c38793c0944c"
+    },
+    {
+      "path": "public/images/editorial/hero-material-a.webp",
+      "sha256": "38c4087a6989b287e32ef77af865b059229624d283e00581fbd38f2c3d39b14e"
+    },
+    {
+      "path": "public/images/editorial/hero-material-b.webp",
+      "sha256": "53ae369e439b08bb0192496fa83eb6c2bf980d35c6e9a5bd2dd8066a530c9885"
+    },
+    {
+      "path": "public/images/editorial/hero-sculpture-mobile.webp",
+      "sha256": "742fea2edef830d308a8b778d93b33be776fdadca69493ba91db5163629dcb1c"
+    },
+    {
+      "path": "public/images/editorial/hero-sculpture.webp",
+      "sha256": "0a9b63265de9b316b370869a70d5d18dc85677bdbdaebc1ccd22258591ad7734"
+    },
+    {
+      "path": "public/images/editorial/hero-structure.webp",
+      "sha256": "dd40df48e26bdea11d7ecb17e4bc2d9681be3101de648c79a7a4af85ca41f584"
+    },
+    {
+      "path": "public/images/editorial/studies/micro-frame-0.webp",
+      "sha256": "a036d314cf9a7af3f7a3bc89d8f74f3981f8be12ac9e601488607dbd53bd2db5"
+    },
+    {
+      "path": "public/images/editorial/studies/micro-frame-1.webp",
+      "sha256": "a39f3b874648964275d3a67645b4bc3c1df11abee1b15dd0727f987c428641b6"
+    },
+    {
+      "path": "public/images/editorial/studies/micro-frame-2.webp",
+      "sha256": "cc830be042313de796b9dbc52ba090dad3e7cd27d6429928fe684b52126e087c"
+    },
+    {
+      "path": "public/images/editorial/studies/micro-frame-3.webp",
+      "sha256": "dfbf42eadd6038d45ac5016d437947efcccd3e6c7befaf01011dd3f4635c7763"
+    },
+    {
+      "path": "public/images/editorial/studies/micro-frame-4.webp",
+      "sha256": "2335cd9637c43db9269efcf296069bd7bf8be74708192f96711c7fee7c78e18e"
+    },
+    {
+      "path": "public/images/illustrations/cell.webp",
+      "sha256": "91c9f5aedf358492ca2bec979844572d8b5f6d6c775c61af7f209fe6db0887b8"
+    },
+    {
+      "path": "public/images/illustrations/collagen-triple-helix-20261011.webp",
+      "sha256": "19a4be99086f9fd5723c7eda24faea03fda1d65272642134e93b1488d234e167"
+    },
+    {
+      "path": "public/images/illustrations/collagen.webp",
+      "sha256": "d3650176ff446542ea85333a5ba5fd3f3f66225ac7d9c9a2ea6edbefcfba8954"
+    },
+    {
+      "path": "public/images/illustrations/skin.webp",
+      "sha256": "bae1595d5d7513ef02268585550ca60e355fcc69e886e2462c7e7f64c8076836"
+    },
+    {
+      "path": "public/images/products/cute-ultra/packaging-card-400.webp",
+      "sha256": "9ff9cab85063934bc6c37bab4a99a8abe7aa6bcace3dc79a490c9cbf41fb8d83"
+    },
+    {
+      "path": "public/images/products/cute-ultra/packaging-card-795.webp",
+      "sha256": "414af9d9e8ee1eca20900d4496e5fc65da95d30556a7b9865adbf14313d54683"
+    },
+    {
+      "path": "public/images/products/cute-ultra/packaging-hero-330.webp",
+      "sha256": "beea67082099ceb1b6386d7b9e68819a12273db754a87822ddadd9c53d53f917"
+    },
+    {
+      "path": "public/images/products/cute-ultra/packaging-hero-660.webp",
+      "sha256": "f441b97a51b19a646a8b5d5d47a7762a83e6716a58321f4ba4dac164ed4c6fb7"
+    },
+    {
+      "path": "public/images/products/cute-ultra/photo-20261008-large.webp",
+      "sha256": "beafea6097846a025850df95c85b38e0f37ef7f9b390705cfc4302e6c307274c"
+    },
+    {
+      "path": "public/images/products/cute-ultra/photo-20261008-small.webp",
+      "sha256": "2cff5a683f52e0b01de5902b9959710a1f0e5e06a5eaaaf88a2e37c938c19486"
+    },
+    {
+      "path": "public/images/products/cute-ultra/photo-alpha-20261009-1000.webp",
+      "sha256": "5b56a7d75ba234a3b666e74357ae6017f3c9bf3e8ffaa4c051921f690f2f760f"
+    },
+    {
+      "path": "public/images/products/cute-ultra/photo-alpha-20261009-400.webp",
+      "sha256": "75d68c603af614e6eb13a09acfc6226ec861cad1cd05bc17f1001ff9086c10b6"
+    },
+    {
+      "path": "public/images/products/cute-ultra/photo-cream-20261009-400.webp",
+      "sha256": "9c80d34f809e4e6f564f43abcb0e322b1e3dd8f37bbdc9276f32c7f09cfd457d"
+    },
+    {
+      "path": "public/images/products/cute-ultra/photo-cream-20261009-640.webp",
+      "sha256": "523f2490fba14d730105ffeb1567f7ef5301285b1b3e055031a1c57586df8686"
+    },
+    {
+      "path": "public/images/products/cute-ultra/visual-01-quality-20261011-1024.webp",
+      "sha256": "35055caed5d85b8c974b705aa956b9f4870287cc9ebb10c195c630c5b67b3d36"
+    },
+    {
+      "path": "public/images/products/cute-ultra/visual-01-quality-20261011.webp",
+      "sha256": "8905353aeb1a79d21f5d5f79f43748715c09b857c4ec646bd513ff8849e5c667"
+    },
+    {
+      "path": "public/images/products/cute-ultra/visual-01.webp",
+      "sha256": "c5b60029103514cff184af70a7ed1614a92dabad09ed2641231e13adca8f22e3"
+    },
+    {
+      "path": "public/images/products/cute/photo-20261008-large.webp",
+      "sha256": "197d506ecaeb30c40e2976fbbef9878c74ec6e1b1ca2c606d0a0a600b1554dbc"
+    },
+    {
+      "path": "public/images/products/cute/photo-20261008-small.webp",
+      "sha256": "3b08a8d0b66ccd1bd54b5956fb6e47208aca413a9d63aa4aee02da87326fd342"
+    },
+    {
+      "path": "public/images/products/cute/photo-alpha-20261009-1000.webp",
+      "sha256": "626519d8e088ddab1b7738b4c62ce203d2850ed3a445c291ccd36dd4ea1f5322"
+    },
+    {
+      "path": "public/images/products/cute/photo-alpha-20261009-400.webp",
+      "sha256": "03fc22dfe164a9cafc57fdba062327f1c9878da1a5e34fe8d597316cf671fae2"
+    },
+    {
+      "path": "public/images/products/cute/visual-01-quality-20261011-1024.webp",
+      "sha256": "c4a753a8ccb20b52bcac1af424b161b6dac9f488466e1dddccb4cf6629fd9b65"
+    },
+    {
+      "path": "public/images/products/cute/visual-01-quality-20261011.webp",
+      "sha256": "bdaed21e8075eb7077b69d0ead5a6599ffc8bd172fe65261b453e746c1cf3c31"
+    },
+    {
+      "path": "public/images/products/cute/visual-01.webp",
+      "sha256": "640c4b1a5ac0f38f14d6452c48b28f16932c8f0948ed336ff05e923901af1e98"
+    },
+    {
+      "path": "public/images/products/cute/visual-02-quality-20261011-1024.webp",
+      "sha256": "f6666e7a43d075d872e4ac888b49afa2ed41eb98d9aed731ed6363da7187fdf5"
+    },
+    {
+      "path": "public/images/products/cute/visual-02-quality-20261011.webp",
+      "sha256": "275c204eb0a72f2b423509122503224902774e2a4d86b0a96c935b09a1a73960"
+    },
+    {
+      "path": "public/images/products/cute/visual-02.webp",
+      "sha256": "e2b2cc867b757d573dc2418e74682e17b2ed6a8caecf928d21fbda6bc99b5a25"
+    },
+    {
+      "path": "public/images/products/nad-skin-matrix/photo-20261008-large.webp",
+      "sha256": "dcc966fa3f07357cdcaf79ad2aa802b057ee7e2501e7d49ce885b702f2e69db6"
+    },
+    {
+      "path": "public/images/products/nad-skin-matrix/photo-20261008-small.webp",
+      "sha256": "1bdb0c226c002ff031dcd2af63a5c61c1fbf59ffbf1a55d753f025998ade3025"
+    },
+    {
+      "path": "public/images/products/nad-skin-matrix/photo-alpha-20261009-1000.webp",
+      "sha256": "b8345cb2d953a071131a33c808bf1048da09ea6d737ae2563d8497d985e8fac4"
+    },
+    {
+      "path": "public/images/products/nad-skin-matrix/photo-alpha-20261009-400.webp",
+      "sha256": "41ed710a6470c9eb4f452c7c2009262323c5becd030fa020be26d88202cd3391"
+    },
+    {
+      "path": "public/images/products/nad-skin-matrix/visual-01-quality-20261011-1024.webp",
+      "sha256": "921f02b8c965e808c4be53eb8204cfe365f9174a7466c1b5b6dac2f28d15deb2"
+    },
+    {
+      "path": "public/images/products/nad-skin-matrix/visual-01-quality-20261011.webp",
+      "sha256": "d2c038996f3e74542aeeaa2ac609e98a36d5d37a638ee7f132ecbecb9ba22ba5"
+    },
+    {
+      "path": "public/images/products/nad-skin-matrix/visual-01.webp",
+      "sha256": "7a748577907ebb0693adab7b37fadbd3c8b1344c52a3ca63dfef7b8807e0c8c2"
+    },
+    {
+      "path": "public/images/products/nad-skin-matrix/visual-02-quality-20261011-1024.webp",
+      "sha256": "4f9ba1d7eb8ab6f10a94fe59905a5d020eb89fafea6c961f62bb1daefacb9a3b"
+    },
+    {
+      "path": "public/images/products/nad-skin-matrix/visual-02-quality-20261011.webp",
+      "sha256": "6427e1b9c8f4c62b824d26886552b1eba167805c6919598772c60b27868e4ad7"
+    },
+    {
+      "path": "public/images/products/nad-skin-matrix/visual-02.webp",
+      "sha256": "9aad5bfcfb74cb1e79108b87126921f2bef9b11b0ed52c26d85606adc96a3622"
+    },
+    {
+      "path": "public/images/products/nad-skin-matrix/visual-03-quality-20261011-1024.webp",
+      "sha256": "1441909a1e142c4d3d892e0c8c0fc448632bbe49fb5cad9ae4729bcea15ec2da"
+    },
+    {
+      "path": "public/images/products/nad-skin-matrix/visual-03-quality-20261011.webp",
+      "sha256": "5fe47a4f88383c30b810b8f5065ef3eddfb7fd1b393f4a5efc262197abeb0439"
+    },
+    {
+      "path": "public/images/products/nad-skin-matrix/visual-03.webp",
+      "sha256": "ded07d0b8fe2966afa71e60dfb03c97aaaacf7e061923eb5d1ca6755ec238130"
+    },
+    {
+      "path": "public/images/products/plla-activator/photo-20261008-large.webp",
+      "sha256": "7cf9e5f0b1df5ce500cc7d778c4c5ec466266b9ed4b61c0622136019dccbce63"
+    },
+    {
+      "path": "public/images/products/plla-activator/photo-20261008-small.webp",
+      "sha256": "9aefab8f17b1c9b9d531e9ec1a3b2217baf398fd089a8895c1dafd54609e6a4f"
+    },
+    {
+      "path": "public/images/products/plla-activator/photo-alpha-20261009-1000.webp",
+      "sha256": "e5de0e46f2362bffa9a19e6abdec36874d971b2cc1423c285f6303ac20b13ee5"
+    },
+    {
+      "path": "public/images/products/plla-activator/photo-alpha-20261009-400.webp",
+      "sha256": "12b2840e07f1bc03539dc118f7f35326b7fbffbac807101a0e452a90cc6f4f4a"
+    },
+    {
+      "path": "public/images/products/plla-activator/visual-01-quality-20261011-1024.webp",
+      "sha256": "f5f410b407cecf31809bc0b4244d04ad853da18fbc03107d30feea5871052eeb"
+    },
+    {
+      "path": "public/images/products/plla-activator/visual-01-quality-20261011.webp",
+      "sha256": "324f165d0085172a59d99aed6db8cbb8c6cc5d54c80a3aafe8e742d61ad5d129"
+    },
+    {
+      "path": "public/images/products/plla-activator/visual-01.webp",
+      "sha256": "d3664302875ef96cb99930f2ad6c87dfa3ba9b6e51289766677462b822a77a4f"
+    },
+    {
+      "path": "public/images/products/plla-activator/visual-02-quality-20261011-1024.webp",
+      "sha256": "f0e4a1d8785c326f84cb013fb2f3f5183f27ae38e5bb7ac89df753afade5fc80"
+    },
+    {
+      "path": "public/images/products/plla-activator/visual-02-quality-20261011.webp",
+      "sha256": "b0075327518e8dc12c1241c212d0b35e14200897348dde7abe9e907fb022738a"
+    },
+    {
+      "path": "public/images/products/plla-activator/visual-02.webp",
+      "sha256": "387deff5b1db4492a695b6c058e98d7185b364fd36e8b86b03533ed337b40e3b"
+    },
+    {
+      "path": "public/images/products/plla-activator/visual-03-quality-20261011-1024.webp",
+      "sha256": "58d3dea3f42c9381ae16218a57aff10c49c1ed7353d477eb92c7a000f0826b18"
+    },
+    {
+      "path": "public/images/products/plla-activator/visual-03-quality-20261011.webp",
+      "sha256": "680749a90120d5ae45be8874a85b56e62928c7f8234c25f7a3794766ec7ee230"
+    },
+    {
+      "path": "public/images/products/plla-activator/visual-03.webp",
+      "sha256": "5edbda4bd19d412643f00cd9b73edd53ca9d9462106c3ea8b2a94e759624e15e"
+    },
+    {
+      "path": "public/images/team/german-cherkasov-clean.webp",
+      "sha256": "b6260ca89d0e36f9cc34573d9c2f35f03bbf7efb1d6214bcc67aecf686e56eef"
+    },
+    {
+      "path": "public/images/team/german-cherkasov-mid-white-coat-20261008-540.webp",
+      "sha256": "c45feec8615968fd7f72230f6b6331daa5ef330270a21b3105a084accaee9975"
+    },
+    {
+      "path": "public/images/team/german-cherkasov-mid-white-coat-20261008-900.webp",
+      "sha256": "816817043742de6763733c95978eda9e217a0ab7f88f47a3e0104faf5b1cced2"
+    },
+    {
+      "path": "public/images/team/german-cherkasov-white-coat-20261008-1024.webp",
+      "sha256": "a116c71900cab6c5190bb917f6d490da64b30c694b84d76e587e012d87f3cdb3"
+    },
+    {
+      "path": "public/images/team/german-cherkasov-white-coat-20261008-540.webp",
+      "sha256": "2d24a992d7d85366d0e30c5229e49b2542b2466480399a596392093735d2b02b"
+    },
+    {
+      "path": "public/images/team/german-cherkasov-wide-white-coat-20261008-1024.webp",
+      "sha256": "f81d196c494bf456e7b50166dbacc4975750f82043bf569990bc498b46e42e3a"
+    },
+    {
+      "path": "public/images/team/german-cherkasov-wide-white-coat-20261008-540.webp",
+      "sha256": "075cbc3e3f4b9213d0d59c5a544f33ca85538dfdc8fff3c17009d24b703c1480"
+    },
+    {
+      "path": "public/images/team/german-cherkasov.webp",
+      "sha256": "67b129824e39c61dbfe0784daa305645d7632576493b049ec06e9da2c7eeaa6e"
+    },
+    {
+      "path": "public/images/team/german-cream-background-20261008-540.webp",
+      "sha256": "27e9b48e94f74faebd0a94f666096ec2b39ccabd4a3f3f55d78d60d64ad4d8d0"
+    },
+    {
+      "path": "public/images/team/german-cream-background-20261008-900.webp",
+      "sha256": "6b72987f51b691cf11dfcf8c5a302488478c36d5f348b4060a3c6aca3d9372ff"
+    },
+    {
+      "path": "public/images/team/lyudmila-chesnokova-clean.webp",
+      "sha256": "776105c7fd8aa18a308cb4d7a504e3f6c8aa83308c8589a4dbadce2ed5b4008b"
+    },
+    {
+      "path": "public/images/team/lyudmila-chesnokova-restored-20261008-1000.webp",
+      "sha256": "be2710d9c3d0f6a9217b0db9c6700b658ba5b269a4a4453598f9665c09485e11"
+    },
+    {
+      "path": "public/images/team/lyudmila-chesnokova-restored-20261008-540.webp",
+      "sha256": "66ed52bc08342f7ca84fa6ea27f4cad160b631bb8b42dd862e0c7a23847eecbd"
+    },
+    {
+      "path": "public/images/team/lyudmila-chesnokova-single-pass-20261008-1000.webp",
+      "sha256": "fce63eb5c643c00fe6ad1df405aa92e20010f0cb6339765623521810d71f6fb5"
+    },
+    {
+      "path": "public/images/team/lyudmila-chesnokova-single-pass-20261008-540.webp",
+      "sha256": "d1f777308cfd1afcede1dc01de33926779ecae2361d5f2f31f783af2602688db"
+    },
+    {
+      "path": "public/images/team/lyudmila-chesnokova-white-tshirt-20261008-1000.webp",
+      "sha256": "ef94ed283273d3fb4298848ff4293e810bef1b194f1ea8c0bf7cbf976d9df70c"
+    },
+    {
+      "path": "public/images/team/lyudmila-chesnokova-white-tshirt-20261008-540.webp",
+      "sha256": "c2f541f09eb914590b8b79197134e941a8b3a0415b3396394a9b1619cd61da79"
+    },
+    {
+      "path": "public/images/team/lyudmila-chesnokova.webp",
+      "sha256": "498012ce6ef55adfec47a8789d9953751e47ed85676baac30fbff1e1c6a8a0ef"
+    },
+    {
+      "path": "public/images/team/lyudmila-cream-background-20261008-1000.webp",
+      "sha256": "1a4fe0b1bee50ad57dea0bae1f59b800d0b14882ead86d8dba41a3c922d19a9f"
+    },
+    {
+      "path": "public/images/team/lyudmila-cream-background-20261008-540.webp",
+      "sha256": "41ad36ff0a88ec523afb46a79b3da6e30a959813faf7e7ac5591dc2dd9119d19"
+    },
+    {
+      "path": "src/components/HeroSculpture.astro",
+      "sha256": "80a28f064e45eacfcbdf89356fdfe210717240df18d86846989299a1cd703fc8"
+    },
+    {
+      "path": "src/components/HeroStructure.astro",
+      "sha256": "792206bedea8e1547d9f721d2228f5aec2d7b19aa9a232604c69972a1e3caead"
+    },
+    {
+      "path": "src/components/HeroVisual.astro",
+      "sha256": "b7e038a8579777fdfeb4dd8c674d200b2425d55bde3a03a474cdb79203ae6262"
+    },
+    {
+      "path": "src/components/MicroDiagram.astro",
+      "sha256": "6ed931d56057c31b3b4fd70e457d5956a68563cefa4f76a7023a4767ca1211a0"
+    },
+    {
+      "path": "src/components/MolecularBackground.astro",
+      "sha256": "240df597f19035292f1b1f69bff5015269ae55c01d5ebbd8ecf26462d6f73f79"
+    },
+    {
+      "path": "src/components/ProductScene.astro",
+      "sha256": "887f5f3f010fa5168deb18ad43dc33c8aa97fcde467f4fb753152b42584acf8e"
+    },
+    {
+      "path": "src/components/ProximityScene.astro",
+      "sha256": "d440504c7193f8177e07b90447a965aa7dbe2f88de6ed32b8f1cc00dfa512229"
+    },
+    {
+      "path": "src/components/RibbonDefinitions.astro",
+      "sha256": "9731f64a179a4b7adbc6bf46353bc5adba91c81e089e8286a25a75eedceae5db"
+    },
+    {
+      "path": "src/components/ScientificIllustration.astro",
+      "sha256": "f5c47f345f2afbe612d696ab81d96a291f649bb3070d43b50c452133881c94e1"
+    },
+    {
+      "path": "src/components/SocialIcon.astro",
+      "sha256": "0cccbf1b762056af79a80f10beebdcc98114b04734d65249903fd6a70cfaa6d7"
+    },
+    {
+      "path": "src/components/TeamVisual.astro",
+      "sha256": "967152db894f205eb3a6f05fbbb8f3e44623942490c8847fe319fd7ed7eb3285"
+    },
+    {
+      "path": "src/components/TelegramButton.astro",
+      "sha256": "0bc5302e142f8bec09c6e8aea654951db31999c5b3121e22fe8b1d60c859e21e"
+    },
+    {
+      "path": "src/components/about/PersonProfile.astro",
+      "sha256": "455185ad970e538281110fa94c7f91f61569e5e173f117b6f56968cbe7b90057"
+    },
+    {
+      "path": "src/components/about/TeamContact.astro",
+      "sha256": "cb5a39b764e457db7e40ee82b4706abac762a6d08747d0c168c4011510656998"
+    },
+    {
+      "path": "src/components/layout/Breadcrumbs.astro",
+      "sha256": "065debc94fed2e19afbfd48b81fbebc67e6d4993954f48ad7cae2fbdc3ea570f"
+    },
+    {
+      "path": "src/components/layout/SoftFooter.astro",
+      "sha256": "946ffc14018e25978dc2b6fa62a1b473d6a64e6808a5d31c03bf4f3086f88b59"
+    },
+    {
+      "path": "src/components/layout/SoftHeader.astro",
+      "sha256": "6558c1c8d2cc33d0e5293efdd067861c082fc91555faccd3c2453d392c6107dd"
+    },
+    {
+      "path": "src/components/products/CollagenExplainer.astro",
+      "sha256": "516733aff0435b88837db3ebe605fb81c6a36e252fb4fcd3d4275aba558370b4"
+    },
+    {
+      "path": "src/components/products/CuteComparison.astro",
+      "sha256": "c053a9b29b672443e1fa4ae82f35f77a778dbee5db9787892b0ae4c7831ce22a"
+    },
+    {
+      "path": "src/components/products/ProductCard.astro",
+      "sha256": "d2bdcef404fadbcd88bd27c29d8bb1c32061478e1fc6b02d92fe93a322b53640"
+    },
+    {
+      "path": "src/components/products/ProductGallery.astro",
+      "sha256": "0be968262eada3a006d5f4c241b9187c1bc39a7d0e8fdc921bb62434d662758a"
+    },
+    {
+      "path": "src/config/contact-links.ts",
+      "sha256": "1d9cd659f36c0bf1f0e935a4ddec564ca2df529b79369cbc4f1dfaa90b8085e2"
+    },
+    {
+      "path": "src/config/navigation.ts",
+      "sha256": "e99e7060587bbf2111c1895006d821233a9f1d4963406a6118ca1b04ce2cc10b"
+    },
+    {
+      "path": "src/config/site.ts",
+      "sha256": "06c26407ed8ee979bd2dda45a1e4d3b733f66d8af0c7eed16a58dd1c060ba2aa"
+    },
+    {
+      "path": "src/content/collagen-explainer.ts",
+      "sha256": "02722e06c9bde757e62837f64d9c0a5303c1483d502b2f63700a171217408b1b"
+    },
+    {
+      "path": "src/content/fixtures.ts",
+      "sha256": "2339b29773707a48fc9018a18b1571bddf3051e75d090c6e6f88896d95dff538"
+    },
+    {
+      "path": "src/content/microworld.ts",
+      "sha256": "d364804f9d88290afda16da7951fc218a13dbc9f205a31766a7700d6f7c964ad"
+    },
+    {
+      "path": "src/content/product-brand-copy.ts",
+      "sha256": "1503f5887deb02d8742a9bd74eaace4e9cc035c9ad7592d9c29f906b060fe587"
+    },
+    {
+      "path": "src/content/site.types.ts",
+      "sha256": "bb72548186ea5e52b21495031899b522dd90e0ef547c19dfe1b80ba856e608a4"
+    },
+    {
+      "path": "src/content/team.ts",
+      "sha256": "fb142441b5827a938a88dd79455c0b5e0c1076c0dfa907172e1538a1797cf78a"
+    },
+    {
+      "path": "src/env.d.ts",
+      "sha256": "5a498a2ff3c0abb338aff60209dfe32fb591fc5ad359182c5a14910f4c2fff8f"
+    },
+    {
+      "path": "src/features/catalog/CatalogFilter.vue",
+      "sha256": "12c9e21506ebf7861401dd660028137b5b89e53d15836c6835f7f1dcbe94cfb0"
+    },
+    {
+      "path": "src/features/catalog/catalog-motion.ts",
+      "sha256": "c768f6f73123483d282e67465ab6ee90fa8a1eea73c6ced16809f983f2962702"
+    },
+    {
+      "path": "src/features/catalog/filter-items.ts",
+      "sha256": "93b3ad44cd29c7af4b6564fd4c484c16fddc8335dc5f7f952fe7d4d232958f8e"
+    },
+    {
+      "path": "src/features/motion/disclosures.ts",
+      "sha256": "f8e947c8852feae33e341b4690f7a8d7a704003884997d238148b00d1bfd365e"
+    },
+    {
+      "path": "src/features/motion/motion.ts",
+      "sha256": "becd8648a14527c7f4e29704ed7e80dc0cb2dd626ee9b9587bc1aa22bf77b708"
+    },
+    {
+      "path": "src/features/motion/product-hover.css",
+      "sha256": "6463f54170023cc88cfd0ecc8f7701bcd2a5cf7de4fbc2a63cff0d5849b1dd75"
+    },
+    {
+      "path": "src/features/motion/product-hover.ts",
+      "sha256": "54b17886ca28f20f0c72e8ddc3ba06d3634ab18d6d8f41618df48b46567ee83d"
+    },
+    {
+      "path": "src/features/motion/tokens.ts",
+      "sha256": "e4c0389a30c3602f903cff7a5bbaf5168eb8af1c0477a0e45c3f21fc66e1e1d8"
+    },
+    {
+      "path": "src/layouts/SiteLayout.astro",
+      "sha256": "afb7f69a21ada3176846bb8ef19765f1f8d14682a5b6024b059cacc68c41384c"
+    },
+    {
+      "path": "src/lib/content/content-repository.ts",
+      "sha256": "e3090906e50e975e784d14d1371eb2afe90b0ae62dba4e9237c74edf1ef64b5c"
+    },
+    {
+      "path": "src/lib/content/fixture-content-repository.ts",
+      "sha256": "fc865aa7665a40d78cc7723112bb185eb8ee76711d6e6abb2aa83d8b4ad476fc"
+    },
+    {
+      "path": "src/lib/content/index.ts",
+      "sha256": "560a76c740af491eddad626a095ebbf8a43c3a5828c077dfa335666c55a1513a"
+    },
+    {
+      "path": "src/lib/molecular-preview.ts",
+      "sha256": "f36b67b7e76b158958d3e7cfc18454851c9d737ba366935a07f50fe7af249974"
+    },
+    {
+      "path": "src/pages/404.astro",
+      "sha256": "09c36f256120e90e27f578ba0e02ff27c81d38c16c6bb316ddca9533f88ca394"
+    },
+    {
+      "path": "src/pages/about.astro",
+      "sha256": "88f9dc019af59aa4b11a42b144d031f6cfff3002fde3cdde1ed1cd688438c3ec"
+    },
+    {
+      "path": "src/pages/contacts.astro",
+      "sha256": "f13a85a831d1dba91cd5c8e69d88649f9efc29981573a15f4e0b830fa5088b5f"
+    },
+    {
+      "path": "src/pages/design-review.astro",
+      "sha256": "cee3511ce2066a790d5fbd2fdb14ac60747d3b5b51aa0b110e6342ae89699377"
+    },
+    {
+      "path": "src/pages/index.astro",
+      "sha256": "d559a460f906007b5ab6bd3920967098b06b470ebf4ca1bee493394951d8405f"
+    },
+    {
+      "path": "src/pages/products/[slug].astro",
+      "sha256": "e8a70e654c5b4f27c811f7f07bf85f58af4e17496f7343a92ca95e8beb95967b"
+    },
+    {
+      "path": "src/pages/products/index.astro",
+      "sha256": "1556268e47da4f54b37d4d80c633a90aec2415b3f20121359955a4c75b7deb11"
+    },
+    {
+      "path": "src/pages/robots.txt.ts",
+      "sha256": "fe41df7b6d8479712f20f01836a1cefd16134adb0c3719141f8c3d33a1f5b770"
+    },
+    {
+      "path": "src/pages/site-map.astro",
+      "sha256": "c21f6e9fb4751afcc489a7023f8ad1f4726e3bbf93b8019425b24de38a30582f"
+    },
+    {
+      "path": "src/pages/webinars/[slug].astro",
+      "sha256": "34b5d846366d47150630aba1433909329a35d7e7957875502e7c6cb9c4a935fe"
+    },
+    {
+      "path": "src/pages/webinars/index.astro",
+      "sha256": "ef147e1e141dd8d4b32edd70e8c2b38f7db5315f6d12bd261ee5485a9e505ccf"
+    },
+    {
+      "path": "src/styles/design-tokens.css",
+      "sha256": "e23113c5392a044d91779ea2b8b1773148f4b45152cc8474ebfd6c865766c20c"
+    },
+    {
+      "path": "src/styles/global.css",
+      "sha256": "40493d2d2b5bc4fb6a1025289c3fabfa5bf0c3ee1744b22e3886d40a0ca7aeaa"
+    },
+    {
+      "path": "src/styles/interface-contract.css",
+      "sha256": "d1bcc5d11b4adfec6781ac8d72b53e6b8ae7efeb728430a42f096aae1a1e13b0"
+    },
+    {
+      "path": "src/styles/molecular-site-preview.css",
+      "sha256": "21de90a859fb2367da388a93f29bfd3de943dba42c27fa43ce7b2b7bb31575f0"
+    },
+    {
+      "path": "src/styles/molecular-study.css",
+      "sha256": "768b3d9d43c0bd078bb08c64c592146be8e899afc6e55043a8470d87dc4a45be"
+    },
+    {
+      "path": "src/styles/motion.css",
+      "sha256": "db36e970c635771edf8117a5f969c79b262c3024e7a8c8757cbd641545fa0f46"
+    },
+    {
+      "path": "src/styles/page-transitions.css",
+      "sha256": "d4d7f39066b06d59210ff12ebbce0c932a697853ec227b4df0db031b69431019"
+    },
+    {
+      "path": "src/styles/site-refinements.css",
+      "sha256": "ddec582defe18168540fa97b9bf29355b4b8635c64a76c1719e021680adaa2af"
+    },
+    {
+      "path": "src/styles/soft-matter.css",
+      "sha256": "8469ca9f98c4d5eee51f5aea0b0b386c015277b6d78066e1c489e697a6174530"
+    },
+    {
+      "path": "src/styles/soft-overrides.css",
+      "sha256": "305529b7d243c8d49b4200979f7107715e8c441ed2d93ce5d8f68f3a44ba43ab"
+    },
+    {
+      "path": "src/styles/visual-story.css",
+      "sha256": "b6d6d1b2a49d1b0c09c6816244bcbf15ae1aeee3b3b55777b9fb808ad48dd990"
+    },
+    {
+      "path": "tests/unit/content-repository.spec.ts",
+      "sha256": "4a6aece34f6553bfe4c36061053b5358d5e04870243b95344099c4529b3eeedc"
+    },
+    {
+      "path": "tests/unit/filter-items.spec.ts",
+      "sha256": "ae693bd36d15c51093a16098bf45be49e0a2aa0e45e65b2ac6900a0dc0280ebd"
+    },
+    {
+      "path": "tests/unit/microworld.spec.ts",
+      "sha256": "e18b8d59f6f242cca240cd705fcd51382832932b512f0f9746c7e1197568f03a"
+    },
+    {
+      "path": "tests/unit/molecular-preview.spec.ts",
+      "sha256": "1f550233f731f4c53b567f011744fbc110b7bf141f2e764314ae1b100f4a0d66"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "f02adcdff5f49e48ecc34000b71aee17aa913f808b5a88d06722ee6f12817f07"
+    },
+    {
+      "path": "vitest.config.ts",
+      "sha256": "14910beaef7a459c2fddad4e9c7e43771aa529c6bcfa29926f8968ea8c4cb1aa"
+    }
+  ]
+}

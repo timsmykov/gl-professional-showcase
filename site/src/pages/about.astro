@@ -1,0 +1,89 @@
+---
+import TeamContact from '@/components/about/TeamContact.astro';
+import PersonProfile from '@/components/about/PersonProfile.astro';
+import SiteLayout from '@/layouts/SiteLayout.astro';
+import { teamMembers } from '@/content/team';
+---
+
+<SiteLayout
+  title="О бренде и команде"
+  description="G&L Professional и сооснователи бренда — Герман Черкасов и Людмила Чеснокова."
+>
+  <article>
+    <header class="about-hero section">
+      <div class="container about-intro">
+        <div>
+          <h1>О бренде и команде</h1>
+        </div>
+        <div class="about-copy">
+          <p class="lede">
+            G&amp;L — препараты и обучение для профессионалов косметологии. За
+            брендом стоят Герман Черкасов и Людмила Чеснокова.
+          </p>
+          <p class="brand-description">
+            В основе G&amp;L — врачебная практика и тренерский опыт основателей.
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <section class="team-section" aria-labelledby="team-heading">
+      <div class="container">
+        <div class="section-top team-heading">
+          <h2 id="team-heading">Основатели G&amp;L</h2>
+        </div>
+
+        {teamMembers.map((person) => (
+          <PersonProfile {...person} />
+        ))}
+      </div>
+    </section>
+
+    <TeamContact />
+  </article>
+</SiteLayout>
+
+<style>
+  .about-hero {
+    padding-block: clamp(32px, 4vw, 64px) clamp(32px, 4vw, 56px);
+  }
+  .about-intro {
+    display: grid;
+    gap: 24px;
+  }
+  .about-intro > *,
+  .about-copy {
+    min-width: 0;
+  }
+  h1 {
+    margin: 0;
+    font-size: var(--display-page);
+    line-height: var(--leading-display);
+    letter-spacing: var(--tracking-display);
+  }
+  .about-copy {
+    max-width: 54ch;
+  }
+  .about-copy .lede {
+    max-width: none;
+    margin: 0;
+    color: var(--color-ink);
+  }
+  .brand-description {
+    margin: 20px 0 0;
+    line-height: var(--text-body-leading);
+    color: var(--color-muted);
+  }
+  h2 {
+    margin: 0;
+    font-size: var(--display-section);
+    line-height: 1.08;
+    letter-spacing: -0.045em;
+  }
+  .team-section {
+    padding-bottom: clamp(32px, 4vw, 56px);
+  }
+  .team-heading {
+    margin-bottom: 24px;
+  }
+</style>

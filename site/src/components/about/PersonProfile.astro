@@ -1,0 +1,177 @@
+---
+interface SocialLink {
+  href: string;
+  label: string;
+}
+
+interface Props {
+  id: string;
+  name: string;
+  role: string;
+  image: string;
+  imageAlt: string;
+  imageSrcSet?: string;
+  imageWidth?: number;
+  imageHeight?: number;
+  credentials: string[];
+  biography: string[];
+  links: SocialLink[];
+}
+
+const {
+  id,
+  name,
+  role,
+  image,
+  imageAlt,
+  imageSrcSet,
+  imageWidth = 1080,
+  imageHeight = 1080,
+  credentials,
+  biography,
+} = Astro.props;
+---
+
+<article id={id} class="profile" aria-labelledby={`${id}-name`}>
+  <header class="profile-heading">
+    <h3 id={`${id}-name`}>{name}</h3>
+    <p class="profile-role">{role}</p>
+  </header>
+  <figure class="profile-image">
+    <img
+      src={image}
+      srcset={imageSrcSet}
+      sizes={
+        imageSrcSet
+          ? '(min-width: 1100px) 32vw, (min-width: 760px) 40vw, 90vw'
+          : undefined
+      }
+      alt={imageAlt}
+      width={imageWidth}
+      height={imageHeight}
+      loading="lazy"
+      decoding="async"
+    />
+  </figure>
+  <div class="profile-content">
+    <h4>Профессиональный опыт</h4>
+    <ul class="credentials" aria-label={`Профессиональные сведения: ${name}`}>
+      {credentials.map((credential) => (
+        <li>{credential}</li>
+      ))}
+    </ul>
+    <div class="biography">
+      <h4>Практика и обучение</h4>
+      {biography.map((paragraph) => (
+        <p>{paragraph}</p>
+      ))}
+    </div>
+  </div>
+</article>
+
+<style>
+  .profile {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-6);
+    scroll-margin-top: var(--space-6);
+    padding-block: clamp(28px, 4vw, 48px);
+  }
+
+  .profile-image {
+    position: relative;
+    width: 100%;
+    max-width: 32rem;
+    aspect-ratio: 4 / 5;
+    margin: 0;
+    overflow: hidden;
+    border-radius: var(--radius-soft);
+    background:
+      radial-gradient(circle at 35% 30%, #ffffffaa, transparent 30%),
+      var(--surface-nad);
+  }
+
+  .profile-image::after {
+    position: absolute;
+    inset: 0;
+    border: 1px solid #ffffff66;
+    border-radius: inherit;
+    content: '';
+    pointer-events: none;
+  }
+
+  .profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  .profile-content,
+  .profile-heading {
+    min-width: 0;
+  }
+  .profile-role {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: var(--text-body-size);
+  }
+
+  h3 {
+    max-width: 20ch;
+    margin-block: 0 var(--space-4);
+    font-size: var(--text-card-size);
+    line-height: var(--leading-display);
+    letter-spacing: -0.045em;
+  }
+
+  .credentials {
+    display: grid;
+    gap: var(--space-3);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  h4 {
+    margin-block: 0 var(--space-4);
+    font-size: var(--text-body-size);
+  }
+
+  .credentials li {
+    padding-bottom: var(--space-3);
+    color: var(--color-muted);
+    line-height: 1.5;
+  }
+
+  .biography {
+    margin-top: var(--space-7);
+  }
+
+  .biography p {
+    max-width: 42rem;
+    margin-block: 0 var(--space-4);
+    line-height: var(--text-body-leading);
+  }
+
+  @media (min-width: 760px) {
+    .profile {
+      grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+      column-gap: var(--space-8);
+      row-gap: var(--space-6);
+      align-items: start;
+      padding-block: clamp(28px, 4vw, 48px);
+    }
+    .profile-heading {
+      grid-column: 2;
+      grid-row: 1;
+    }
+    .profile-image {
+      grid-column: 1;
+      grid-row: 1 / 3;
+    }
+    .profile-content {
+      grid-column: 2;
+      grid-row: 2;
+    }
+  }
+</style>

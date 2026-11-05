@@ -1,0 +1,123 @@
+---
+interface Props {
+  id: string;
+}
+const { id } = Astro.props;
+const lipids = Array.from({ length: 26 }, (_, i) => 24 + i * 28).filter(
+  (x) => x < 318 || x > 426,
+);
+---
+
+<svg
+  class="micro-diagram proximity-ribbon"
+  viewBox="0 0 760 560"
+  role="img"
+  aria-labelledby={`${id}-title ${id}-desc`}
+>
+  <title
+    id={`${id}-title`}
+  >Условная модель сигнала через мембранный рецептор</title>
+  <desc id={`${id}-desc`}>
+    Золотая молекула снаружи связывается с рецептором. Рецептор проходит через
+    мембрану; внутри клетки показаны участники передачи сигнала. Это не
+    изображение действия препаратов G&amp;L.
+  </desc>
+  <defs>
+    <linearGradient id={`${id}-water`} x2="0" y2="1">
+      <stop stop-color="#edf2e8" />
+      <stop offset="1" stop-color="#bdd4d1" />
+    </linearGradient>
+    <radialGradient id={`${id}-lipid`} cx=".3" cy=".2">
+      <stop stop-color="#faf9ee" />
+      <stop offset=".6" stop-color="#97b9b6" />
+      <stop offset="1" stop-color="#557e84" />
+    </radialGradient>
+    <linearGradient id={`${id}-gold`} x2=".8" y2="1">
+      <stop stop-color="#f4dfae" />
+      <stop offset="1" stop-color="#98703d" />
+    </linearGradient>
+    <linearGradient id={`${id}-receptor`}>
+      <stop stop-color="#426a73" />
+      <stop offset=".5" stop-color="#83a6a8" />
+      <stop offset="1" stop-color="#31515d" />
+    </linearGradient>
+  </defs>
+  <rect width="760" height="560" rx="36" fill={`url(#${id}-water)`} />
+  <path
+    d="M0 297 Q180 275 380 300 T760 299 V560 H0Z"
+    fill="#a1c2c1"
+    opacity=".35"
+  />
+  <g class="micro-camera">
+    <g fill="#779da1" opacity=".22">
+      <circle cx="100" cy="113" r="15" />
+      <circle cx="645" cy="135" r="26" />
+      <circle cx="576" cy="80" r="10" />
+      <circle cx="180" cy="430" r="23" />
+      <circle cx="656" cy="462" r="14" />
+    </g>
+    <g stroke="#73969a" stroke-width="3" fill={`url(#${id}-lipid)`}>
+      {lipids.map((x) => (
+        <g>
+          <path
+            d={`M${x - 4} 269 l-3 14 5 13 M${x + 4} 269 l3 14 -5 13 M${x - 4} 322 l-3 -12 5 -12 M${x + 4} 322 l3 -12 -5 -12`}
+            fill="none"
+          />
+          <ellipse cx={x} cy="260" rx="12" ry="13" />
+          <ellipse cx={x} cy="330" rx="12" ry="13" />
+        </g>
+      ))}
+    </g>
+    <path
+      class="micro-receptor"
+      d="M326 194 Q326 166 345 163 L355 203 Q371 220 387 203 L397 163 Q419 167 419 194 L407 248 L398 335 Q406 351 397 367 Q371 390 346 367 Q337 351 346 335 L337 248Z"
+      fill={`url(#${id}-receptor)`}
+      stroke="#315661"
+      stroke-width="2"
+    />
+    <g
+      class="micro-ligand"
+      fill={`url(#${id}-gold)`}
+      stroke="#a77d43"
+      stroke-width="2"
+    >
+      <g transform="translate(0 25)">
+        <path d="M354 164 L362 151 L380 151 L390 164 L381 180 L363 180Z" />
+        <circle cx="359" cy="157" r="8" />
+        <circle cx="384" cy="157" r="8" />
+        <circle cx="371" cy="178" r="9" />
+      </g>
+    </g>
+    <g
+      class="micro-signal"
+      stroke="#99753f"
+      stroke-width="3"
+      fill={`url(#${id}-gold)`}
+    >
+      <path
+        d="M372 377 L405 420 L482 451 L542 491"
+        fill="none"
+        stroke-dasharray="5 8"
+      />
+      <circle cx="406" cy="420" r="14" />
+      <circle cx="482" cy="451" r="18" />
+      <circle cx="542" cy="491" r="23" />
+      <circle cx="542" cy="491" r="36" fill="none" opacity=".4" />
+    </g>
+  </g>
+  <g fill="#24434e" font-family="Arial, sans-serif" font-size="19">
+    <text x="30" y="43">
+      Вне клетки
+    </text>
+    <text x="30" y="520">
+      Внутри клетки
+    </text>
+    <text x="500" y="239">
+      Мембрана
+    </text>
+    <path d="M473 193 H425" stroke="#426873" />
+    <text x="480" y="199">
+      Рецептор
+    </text>
+  </g>
+</svg>

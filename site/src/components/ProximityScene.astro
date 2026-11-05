@@ -1,0 +1,96 @@
+---
+import ScientificIllustration from './ScientificIllustration.astro';
+---
+
+<section class="cell-explainer" aria-labelledby="proximity-title">
+  <div class="wrap cell-explainer__grid">
+    <div>
+      <h2 id="proximity-title">
+        Как клетка
+        <br />
+        <span>получает сигнал</span>
+      </h2>
+      <ol class="cell-explainer__steps">
+        <li>
+          <strong>На поверхности</strong>
+          <p>
+            Мембрана отделяет внутреннюю среду клетки. На ней находятся
+            рецепторы.
+          </p>
+        </li>
+        <li>
+          <strong>Встреча с рецептором</strong>
+          <p>Подходящая сигнальная молекула связывается с рецептором.</p>
+        </li>
+        <li>
+          <strong>Сигнал внутри</strong>
+          <p>
+            Внутриклеточные участники передают сигнал дальше. Ответ зависит от
+            клетки и сигнального пути.
+          </p>
+        </li>
+      </ol>
+    </div>
+    <div>
+      <ScientificIllustration
+        name="cell"
+        alt="Условная мембрана клетки с рецептором, сигнальной молекулой и участниками передачи сигнала внутри"
+        caption="Учебная иллюстрация. Масштабы и формы условны; не показывает действие конкретного препарата G&L."
+      />
+      <a class="text-link" href="https://www.ncbi.nlm.nih.gov/books/NBK27151/">
+        Источник: NCBI — передача сигнала
+      </a>
+    </div>
+  </div>
+</section>
+<style>
+  .cell-explainer {
+    --muted: #405a62;
+    background: var(--ice);
+    padding: var(--section-space) 0;
+  }
+  .cell-explainer__grid {
+    display: grid;
+    gap: 32px;
+    align-items: center;
+  }
+  h2 {
+    margin: 0 0 32px;
+    font-size: var(--display-section);
+    line-height: 1.08;
+    overflow-wrap: break-word;
+  }
+  .cell-explainer__steps {
+    display: grid;
+    gap: 24px;
+    padding-left: 24px;
+  }
+  li {
+    padding-left: 8px;
+  }
+  li::marker {
+    color: var(--muted);
+  }
+  strong {
+    font-size: var(--text-body-size);
+  }
+  p {
+    margin: 8px 0 0;
+    color: var(--muted);
+    max-width: 42ch;
+  }
+  .text-link {
+    font-size: var(--text-meta-size);
+    line-height: 1.5;
+    display: inline-flex;
+    margin-top: 16px;
+    min-height: 44px;
+    align-items: center;
+  }
+  @media (min-width: 1000px) {
+    .cell-explainer__grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+  }
+</style>

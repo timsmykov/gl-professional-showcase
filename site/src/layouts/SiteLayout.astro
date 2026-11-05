@@ -1,0 +1,114 @@
+---
+import SiteFooter from '@/components/layout/SoftFooter.astro';
+import SiteHeader from '@/components/layout/SoftHeader.astro';
+import { siteConfig } from '@/config/site';
+import '@/styles/global.css';
+import '@/styles/soft-matter.css';
+import '@/styles/soft-overrides.css';
+import '@/styles/motion.css';
+import '@/styles/page-transitions.css';
+import '@/styles/visual-story.css';
+import '@/styles/site-refinements.css';
+import '@/styles/interface-contract.css';
+import '@/styles/molecular-study.css';
+import '@/styles/molecular-site-preview.css';
+import MolecularBackground from '@/components/MolecularBackground.astro';
+import { isMolecularTheme, molecularPageKind } from '@/lib/molecular-preview';
+import RibbonDefinitions from '@/components/RibbonDefinitions.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description = siteConfig.description,
+  noindex = false,
+} = Astro.props;
+const pageTitle =
+  title === siteConfig.name ? title : `${title} — ${siteConfig.name}`;
+const molecularPreview = isMolecularTheme(Astro.site, Astro.url.pathname);
+const devPreview = Astro.site?.origin === 'https://dev.glprofessional.ru';
+const pageKind = molecularPageKind(Astro.url.pathname);
+const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
+---
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    {(noindex || devPreview) && (
+      <meta name="robots" content="noindex, nofollow" />
+    )}
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <title>{pageTitle}</title>
+  </head>
+  <body id="page-top" tabindex="-1">
+    <a class="skip-link" href="#main-content">
+      Перейти к содержимому
+    </a>
+    <RibbonDefinitions />
+    <div class="shell">
+      <SiteHeader />
+      <main
+        id="main-content"
+        data-molecular-preview={molecularPreview ? pageKind : undefined}
+      >
+        {molecularPreview && pageKind !== 'home' && <MolecularBackground />}
+        <slot />
+      </main>
+      <SiteFooter />
+    </div>
+  </body>
+</html>
+<script>
+  import { mountMotion } from '@/features/motion/motion';
+  mountMotion();
+  // Cancel native image dragging, including images inside links and galleries.
+  document.addEventListener('dragstart', (event) => {
+    if (
+      event.target instanceof Element &&
+      (event.target.closest('img, picture, svg') ||
+        event.target.closest('a')?.querySelector('img, picture, svg'))
+    ) {
+      event.preventDefault();
+    }
+  });
+  document
+    .querySelector('[data-back-to-top]')
+    ?.addEventListener('click', () => {
+      // Native fragment scrolling remains available without JavaScript.
+      document.body.focus({ preventScroll: true });
+    });
+</script>
+
+<style is:global>
+  .skip-link {
+    position: fixed;
+    z-index: 10;
+    top: 0.5rem;
+    left: 0.5rem;
+    translate: 0 -200%;
+    border-radius: 0.5rem;
+    background: var(--color-text);
+    color: var(--color-surface);
+    padding: 0.75rem 1rem;
+  }
+
+  .skip-link:focus {
+    translate: 0;
+  }
+</style>

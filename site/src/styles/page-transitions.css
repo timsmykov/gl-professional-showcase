@@ -1,0 +1,15 @@
+/* Navigation keeps the header and content immediately available. */
+@view-transition {
+  navigation: none;
+}
+#page-top:focus {
+  outline: none;
+}
+.toggle {
+  transition: transform var(--motion-panel) var(--motion-ease);
+}
+@media (prefers-reduced-motion: reduce) {
+  .toggle {
+    transition: none;
+  }
+}

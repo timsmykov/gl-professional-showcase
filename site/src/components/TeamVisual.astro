@@ -1,0 +1,64 @@
+---
+interface Props {
+  education?: boolean;
+}
+const { education = false } = Astro.props;
+---
+
+<div class:list={['team-visual', { 'lesson-art': education }]}>
+  <div class="team-visual-grid">
+    <figure>
+      <img
+        src="/images/team/german-cream-background-20261008-900.webp"
+        srcset="/images/team/german-cream-background-20261008-540.webp 540w, /images/team/german-cream-background-20261008-900.webp 900w"
+        sizes="(min-width: 960px) 24vw, 44vw"
+        alt="Герман Черкасов"
+        width="900"
+        height="1125"
+        loading="lazy"
+        decoding="async"
+        style="aspect-ratio: 4 / 5; object-position: top"
+      />
+      <figcaption>Герман Черкасов</figcaption>
+    </figure>
+    <figure>
+      <img
+        src="/images/team/lyudmila-cream-background-20261008-1000.webp"
+        srcset="/images/team/lyudmila-cream-background-20261008-540.webp 540w, /images/team/lyudmila-cream-background-20261008-1000.webp 1000w"
+        sizes="(min-width: 960px) 24vw, 44vw"
+        alt="Людмила Чеснокова"
+        width="1000"
+        height="1250"
+        loading="lazy"
+        decoding="async"
+        style="aspect-ratio: 4 / 5; object-position: top"
+      />
+      <figcaption>Людмила Чеснокова</figcaption>
+    </figure>
+  </div>
+  {education && (
+    <p class="team-visual-caption">
+      Практический опыт.
+      <br />
+      Обучение коллег.
+    </p>
+  )}
+</div>
+
+<style>
+  .team-visual-grid {
+    gap: 12px;
+  }
+  figcaption {
+    font-size: clamp(0.75rem, 3.25vw, 1rem);
+    white-space: normal;
+    text-wrap: balance;
+    letter-spacing: -0.02em;
+  }
+  @media (min-width: 760px) {
+    figcaption {
+      font-size: var(--text-meta-size);
+      white-space: normal;
+    }
+  }
+</style>

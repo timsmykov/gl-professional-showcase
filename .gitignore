@@ -1,0 +1,14 @@
+node_modules/
+**/node_modules/
+**/.venv/
+**/__pycache__/
+**/.pytest_cache/
+**/.ruff_cache/
+**/.astro/
+**/dist/
+**/.gstack/
+**/.playwright*/
+.env
+**/.env
+*.log
+pages-build/
