@@ -43,7 +43,7 @@ From the repository root, `python3 -m http.server 8080 --bind 127.0.0.1` serves 
 
 For database verification, run `uv run python ../scripts/check_database.py` from `backend/`. It uses one disposable local PostgreSQL container, applies the complete migrations twice, runs API/DB checks and removes only its test container. It does not read production configuration.
 
-The site can be built with its documented Node/npm dependencies. Clinical media and internal deployment material are deliberately excluded from this snapshot, so use the original business site for the complete visual/product experience rather than assuming all original media is redistributed here.
+The site can be checked independently with `cd site`, `npm ci`, `npm test` and `npm run build`. Its original package metadata and lockfile are preserved; known dependency advisories and the tested toolchain are recorded in [verification](docs/verification.md). Clinical media and internal deployment material are deliberately excluded from this snapshot, so use the original business site for the complete visual/product experience rather than assuming all original media is redistributed here.
 
 ## Publication boundary
 
